@@ -7,14 +7,16 @@ $(document).ready(function() {
     nutritionAPIKey = "b85dca31bdd750ae0c2d4fcc2095bafe";
     
 
-    // Request for Recipes
+    // Request for Recipes - on click function
     $("#submit-recipe").on("click", function(event) {
 
         event.preventDefault();
 
         $(".display-recipes").empty();
 
-        var recipeQueryTerm = $("#search-terms").val().trim();
+        var recipeQueryTerm = $("#recipe-search").val().trim();
+        $("#recipe-search").val("");
+
         // recipeQueryURL = "https://api.edamam.com/search?q=chicken&app_id=$" + recipeAppID + "&app_key=$" + recipeAPIKey + "&from=0&to=3&calories=591-722&health=alcohol-free";
         recipeQueryURL = "https://api.edamam.com/search?q=" + recipeQueryTerm + "&app_id=$" + recipeAppID + "&app_key=$" + recipeAPIKey + "&from=0&to=10";
 
@@ -72,6 +74,11 @@ $(document).ready(function() {
         var myRecipeServings = $("#my-recipe-servings").val().trim();
         var myRecipeIngredients = $("#my-recipe-ingredients").val().split('\n');
 
+        $("#my-recipe-name").val("");
+        $("#my-recipe-servings").val("");
+        $("#my-recipe-ingredients").val("");
+
+
 
         var myRecipeJSON = {
             "title": myRecipeTitle,
@@ -106,6 +113,9 @@ $(document).ready(function() {
 
         var ingredient = $("#ingredient-entry").val().trim();
         var ingredientEntry = encodeURI(ingredient);
+
+        $("#ingredient-entry").val("");
+
 
         var nutritionQueryURL = "https://api.edamam.com/api/nutrition-data?app_id=" + nutritionAppID + "&app_key=" + nutritionAPIKey + "&ingr=" + ingredientEntry;
 
