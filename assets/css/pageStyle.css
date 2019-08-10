@@ -7,6 +7,7 @@
 }
 h1{
     font-size: 18px;
+    
 }
 h4{
     font-size: 15px;
@@ -23,8 +24,8 @@ h4{
     background-color: aqua;
 }
 .profilePic{
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 300px;
+    max-height: 300px;
     margin:10px auto;
 }
 .nav{
@@ -57,4 +58,10 @@ button:hover{
 }
 a{
     font-size: 16px;
+    color: whitesmoke;
+}
+.infoBox{
+    border: groove gray 1px;
+    margin: 10px 0;
+    overflow: auto;
 }

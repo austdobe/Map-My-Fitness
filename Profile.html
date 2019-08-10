@@ -21,16 +21,21 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 card infoBox">
+                <h1 class="card-title" id="userName">userName</h1>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="card">
-                            <img class="profilePic" src="https://via.placeholder.com/200">
+                            <div class="row">
+                                <img class="profilePic img-thumbnail" src="https://via.placeholder.com/200">
+                            </div>
+                            <div class="row">
+                                <button type="image" class="my-pond btn-block btn-primary" id="changePic" name="filepond">Change Profile Picture</button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="card">
-                            <h1 class="card-title text-center">Current Information</h1>
                             <h4 class="info">Height: <span id="height"></span> </h4>
                             <h4 class="info">weight: <span id="weight"></span> </h4>
                             <h4 class="info">Age: <span id="age"></span> </h4>
@@ -55,7 +60,18 @@
             </div>
         </div>
     </div>
-    
+
+
+
+<script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+<script>
+// Register the plugin
+FilePond.registerPlugin(FilePondPluginImageCrop);
+
+// ... FilePond initialisation code here
+</script>
     
 </body>
 </html>
