@@ -1,0 +1,67 @@
+.bigContainer{
+    background-color: aquamarine;
+}
+.container{
+    background-color:lightblue;
+    height: 900px
+}
+h1{
+    font-size: 18px;
+    
+}
+h4{
+    font-size: 15px;
+}
+.card{
+    width: 100%;
+    height: 300px;
+    margin: 20px auto;
+    background-color: lightblue;
+    border: none;
+
+}
+.card-title{
+    background-color: aqua;
+}
+.profilePic{
+    max-width: 300px;
+    max-height: 300px;
+    margin:10px auto;
+}
+.nav{
+    height: 75px;
+    background-color: rgb(24, 24, 136)
+}
+.info{
+    margin: 20px 0; 
+    text-align: left;
+}
+button{
+    background-color: rgba(24, 24, 136);
+    border: none;
+    margin: auto 10px;
+    height: 50px;
+    width: 100px;
+    color: white
+}
+button:hover{
+    background-color: lightblue
+}
+.logo{
+    height: 75px;
+    width: 100px;
+
+}
+.nav-item{
+    text-align: center;
+    margin: auto 30px;
+}
+a{
+    font-size: 16px;
+    color: whitesmoke;
+}
+.infoBox{
+    border: groove gray 1px;
+    margin: 10px 0;
+    overflow: auto;
+}
