@@ -72,6 +72,12 @@ a{
     margin: 10px 0;
     overflow: auto;
 }
+
+.card{
+    display: inline-block;
+    border: solid blue 2px;
+}
+
 .recipe-card{
     display:inline-block;
     width:50%;
