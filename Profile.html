@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/pageStyle.css">
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="assets/Javascript/login.js"></script>
 </head>
 <body class="bigContainer">
 
@@ -17,12 +23,12 @@
         <button class="nav-item"> <a href="index.html">Workouts</a></button>
         <button class="nav-item"> <a href="Recipes.html">Recipes</a></button>
         <button class="nav-item"> <a href="Profile.html">Profile</a></button>
-        <button class="nav-item"> <a href="#">Sign in</a></button>
+        <button class="nav-item" id="signInModalButton" data-toggle="modal" data-target="#exampleModal"> <a href="#">Sign in</a></button>
     </div>
     <div class="container">
         <div class="row">
             <div class="col-sm-6 card infoBox">
-                <h1 class="card-title" id="userName">userName</h1>
+                <h1 class="card-title" id="userName"></h1>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="card">
