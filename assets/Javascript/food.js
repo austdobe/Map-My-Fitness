@@ -32,25 +32,26 @@ $(document).ready(function() {
             for (i=0; i < results.length; i++) {
 
                 var divWrapper = $("<div>");
+                divWrapper.addClass("card recipe-card card-body")
 
                 var imageURL = results[i].recipe.image;
 
                 var myImage = $("<img>");
-
+                myImage.addClass("card-img")
                 myImage.attr("src", imageURL);
                 myImage.attr("alt", "my image");
                 console.log(results[i].recipe.url);
                 console.log(results[i].recipe.label);
 
-                var recipeName = $("<a>");
+                var recipeName = $("<p>");
                 recipeName.text(results[i].recipe.label);
-                recipeName.addClass("recipeLink");
-                recipeName.attr("href", results[i].recipe.url).attr('target','_blank');
+                recipeName.addClass("recipeLink card-text");
+                recipeName.attr("a href", results[i].recipe.url).attr('target','_blank');
 
-                var recipeCalories = $("<span>");
+                var recipeCalories = $("<p>");
                 recipeCalories.text("Calories: " + Math.floor(results[i].recipe.calories) + ". ");
 
-                var recipeServings = $("<span>");
+                var recipeServings = $("<p>");
                 recipeServings.text("Servings: " + results[i].recipe.yield + ".");
 
                 divWrapper.append(myImage, recipeName, recipeCalories, recipeServings);
