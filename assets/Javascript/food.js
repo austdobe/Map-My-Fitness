@@ -6,28 +6,45 @@ $(document).ready(function() {
     nutritionAppID = "92b9868a";
     nutritionAPIKey = "b85dca31bdd750ae0c2d4fcc2095bafe";
     
+    function displayNutrition(response) {
+        var results = response.totalNutrients;
+        // console.log(results);
 
-    // Request for Recipes - on click function
+        $(".header-title").text("Nutrition Facts");
+        var rServings = "<tr><td>Number of servings: TEMP HOLD</td></tr>"; // results.
+        var rCalories = "<tr><td>Calories per serving: " + Math.floor(results.ENERC_KCAL.quantity) + "</td></tr>";
+        var rTotalFat = "<tr><td>Total Fat: " + Math.floor(results.FAT.quantity) + results.FAT.unit + "</td></tr>";
+        var rSaturatedFat = "<tr><td>Saturated Fat: " + Math.floor(results.FASAT.quantity) + results.FASAT.unit + "</td></tr>";
+        //Trans Fat:
+        //Cholesterol:
+        var rSodium = "<tr><td>Sodium: " + Math.floor(results.NA.quantity) + results.NA.unit + "</td></tr>";
+        var rCarbs = "<tr><td>Total Carbohydrates: " + Math.floor(results.CHOCDF.quantity) + results.CHOCDF.unit + "</td></tr>";
+        var rFiber = "<tr><td>Dietary Fiber: " + Math.floor(results.FIBTG.quantity) + results.FIBTG.unit + "</td></tr>";
+        var rSugar = "<tr><td>Total Sugars: " + Math.floor(results.SUGAR.quantity) + results.SUGAR.unit + "</td></tr>";
+        var rProtein = "<tr><td>Protein: " + Math.floor(results.PROCNT.quantity) + results.PROCNT.unit + "</td></tr>";
+
+        $(".display-nutrition").append(rServings + rCalories + rTotalFat + rSaturatedFat + rSodium + rCarbs + rFiber + rSugar + rProtein);
+    }
+
+    // Search for Recipes - on click function
     $("#submit-recipe").on("click", function(event) {
 
         event.preventDefault();
 
         $(".display-recipes").empty();
+        $(".search-boxes").hide();
 
         var recipeQueryTerm = $("#recipe-search").val().trim();
         $("#recipe-search").val("");
 
-        // recipeQueryURL = "https://api.edamam.com/search?q=chicken&app_id=$" + recipeAppID + "&app_key=$" + recipeAPIKey + "&from=0&to=3&calories=591-722&health=alcohol-free";
         recipeQueryURL = "https://api.edamam.com/search?q=" + recipeQueryTerm + "&app_id=$" + recipeAppID + "&app_key=$" + recipeAPIKey + "&from=0&to=10";
-
-
 
         $.ajax({
             url: recipeQueryURL,
             method: "GET"
         }).then(function(response) {
 
-            var results = response.hits;
+            results = response.hits;
 
             for (i=0; i < results.length; i++) {
 
@@ -78,8 +95,6 @@ $(document).ready(function() {
         $("#my-recipe-servings").val("");
         $("#my-recipe-ingredients").val("");
 
-
-
         var myRecipeJSON = {
             "title": myRecipeTitle,
             "yield": myRecipeServings,
@@ -97,19 +112,20 @@ $(document).ready(function() {
     
         }).then(function(response) {
     
-            console.log(response);
+            displayNutrition(response);
     
         });
 
     });
 
 
-
+    // Individual Food Item Nutrition Facts
     $("#submit-ingredient").on("click", function(event) {
 
         event.preventDefault();
 
         $(".display-recipes").empty();
+        $(".search-boxes").hide();
 
         var ingredient = $("#ingredient-entry").val().trim();
         var ingredientEntry = encodeURI(ingredient);
@@ -124,9 +140,7 @@ $(document).ready(function() {
             method: "GET"
         }).then(function(response) {
 
-            console.log(response);
-
-
+            displayNutrition(response);
 
         });
 
