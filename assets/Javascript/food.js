@@ -76,7 +76,7 @@ $(document).ready(function() {
                 recipeName.attr("href", results[i].recipe.url).attr('target','_blank');
 
                 var recipeCalories = $("<p>").addClass("text-center");
-                recipeCalories.text("Calories: " + Math.floor(results[i].recipe.calories / results[i].recipe.yield)) + ". ");
+                recipeCalories.text("Calories: " + Math.floor(results[i].recipe.calories / results[i].recipe.yield) + ". ");
 
                 var recipeServings = $("<p>").addClass("text-center");
                 recipeServings.text("Servings: " + results[i].recipe.yield + ".");
