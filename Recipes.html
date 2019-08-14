@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/pageStyle.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="assets/Javascript/login.js"></script>
 
 </head>
 <body class="bigContainer">
@@ -16,7 +23,7 @@
         <button class="nav-item"> <a href="index.html">Workouts</a></button>
         <button class="nav-item"> <a href="Recipes.html">Recipes</a></button>
         <button class="nav-item"> <a href="Profile.html">Profile</a></button>
-        <button class="nav-item"> <a href="#">Sign in</a></button>
+        <button class="nav-item" id="signInModalButton" data-toggle="modal" data-target="#exampleModal"> <a href="#">Sign in</a></button>
     </div>
     <!-- <div class="container">
         <h1>Recipes</h1>
@@ -26,58 +33,66 @@
 
     <div class="container">
 
-        <h1 class="text-center">Recipes</h1>
+        <h1 class="text-center header-title">Recipes</h1>
 
-        <div class="row">
+        <div class="search-boxes">
 
-            <div class="col-md-6">
+            <div class="row">
 
-                <div class="card">
-                    <div class="card-body text-center">
-                        <form>
-                            <div class="form-group">
-                                <label for="recipe-search"><h3>Search For Recipes</h3></label>
-                                <input type="text" class="form-control" id="recipe-search" placeholder="What recipes do you want to search for?">
+                <div class="col-md-6">
+
+                    <!-- <div class="card-columns"> -->
+
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="recipe-search"><h3>Search For Recipes</h3></label>
+                                        <input type="text" class="form-control" id="recipe-search" placeholder="What recipes do you want to search for?">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="submit-recipe">Submit</button>
+                                </form>
                             </div>
-                            <button type="submit" class="btn btn-primary" id="submit-recipe">Submit</button>
-                        </form>
-                    </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="ingredient-entry"><h3>Enter food to calculate nutrition</h3></label>
+                                        <input type="text" class="form-control" id="ingredient-entry" placeholder="Enter a food item">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="submit-ingredient">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    <!-- </div> -->
+
                 </div>
 
-                <div class="card">
-                    <div class="card-body text-center">
-                        <form>
-                            <div class="form-group">
-                                <label for="ingredient-entry"><h3>Enter food to calculate nutrition</h3></label>
-                                <input type="text" class="form-control" id="ingredient-entry" placeholder="Enter a food item">
-                            </div>
-                            <button type="submit" class="btn btn-primary" id="submit-ingredient">Submit</button>
-                        </form>
+                <div class="col-md-6">
+
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <form>
+                                <div class="form-group">
+                                    <label for="my-recipe-name"><h3>Recipe Name:</h3></label>
+                                    <input type="text" class="form-control" id="my-recipe-name" placeholder="What is the name of your recipe?">
+                                </div>
+                                <div class="form-group">
+                                    <label for="my-recipe-servings"><h3>Number of servings:</h3></label>
+                                    <input type="text" class="form-control" id="my-recipe-servings" placeholder="Number of servings?">
+                                </div>
+                                <div class="form-group">
+                                    <label for="my-recipe-ingredients"><h3>Ingredients (one per line)</h3></label>
+                                    <textarea class="form-control" id="my-recipe-ingredients" rows="10"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="submit-my-recipe">Submit</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-
-            <div class="col-md-6">
-
-                <div class="card">
-                    <div class="card-body text-center">
-                        <form>
-                            <div class="form-group">
-                                <label for="my-recipe-name"><h3>Recipe Name:</h3></label>
-                                <input type="text" class="form-control" id="my-recipe-name" placeholder="What is the name of your recipe?">
-                            </div>
-                            <div class="form-group">
-                                <label for="my-recipe-servings"><h3>Number of servings:</h3></label>
-                                <input type="text" class="form-control" id="my-recipe-servings" placeholder="Number of servings?">
-                            </div>
-                            <div class="form-group">
-                                <label for="my-recipe-ingredients"><h3>Ingredients (one per line)</h3></label>
-                                <textarea class="form-control" id="my-recipe-ingredients" rows="10"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary" id="submit-my-recipe">Submit</button>
-                        </form>
-                    </div>
                 </div>
 
             </div>
@@ -87,14 +102,28 @@
         <div class="row">
 
             <div class="display-recipes">
-
+            <!-- When searching for recipes, the results will display here. -->
             </div>
 
+        </div>
 
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 text-center">
+                <table class="table text-center">
+                    <tbody class="display-nutrition">
+                        <!-- When searching for nutrition facts, the results will display here. -->
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </div>
 
+
+
+
+
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/Javascript/food.js"></script>
 
