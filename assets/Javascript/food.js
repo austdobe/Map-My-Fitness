@@ -66,20 +66,20 @@ $(document).ready(function() {
                 var imageURL = results[i].recipe.image;
 
                 var myImage = $("<img>");
-                myImage.addClass("card-img")
+                myImage.addClass("card-img text-center")
                 myImage.attr("src", imageURL);
                 myImage.attr("alt", "my image");
 
-                var recipeName = $("<p>");
-                recipeName.text(results[i].recipe.label);
+                var recipe = $("<p>").text(results[i].recipe.label).addClass("text-center");
+                var recipeName = $("<a>").append(recipe);
                 recipeName.addClass("recipeLink card-text");
-                recipeName.attr("a href", results[i].recipe.url).attr('target','_blank');
+                recipeName.attr("href", results[i].recipe.url).attr('target','_blank');
 
-                var recipeCalories = $("<p>");
-                recipeCalories.text("Calories: " + Math.floor(results[i].recipe.calories / results[i].recipe.yield));
+                var recipeCalories = $("<p>").addClass("text-center");
+                recipeCalories.text("Calories: " + Math.floor(results[i].recipe.calories / results[i].recipe.yield)) + ". ");
 
-                var recipeServings = $("<p>");
-                recipeServings.text("Servings: " + results[i].recipe.yield);
+                var recipeServings = $("<p>").addClass("text-center");
+                recipeServings.text("Servings: " + results[i].recipe.yield + ".");
 
                 // Display recipes on page
                 divWrapper.append(myImage, recipeName, recipeCalories, recipeServings);

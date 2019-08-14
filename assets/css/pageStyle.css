@@ -50,7 +50,8 @@ button{
     margin: auto 10px;
     height: 50px;
     width: 100px;
-    color: white
+    color: white;
+    overflow: auto;
 }
 button:hover{
     background-color: lightblue
@@ -66,7 +67,7 @@ button:hover{
 }
 a{
     font-size: 16px;
-    color: whitesmoke;
+    color: black;
 }
 .infoBox{
     margin: 10px 0;
@@ -76,8 +77,8 @@ a{
 .recipe-card{
     display:inline-block;
     width:50%;
-    margin: 0 auto;
-    
+    padding-top:10px;
+    margin: 0  auto;
 }
 .card-img{
     max-width: 200px;
@@ -90,3 +91,10 @@ a{
     border: solid blue 2px;;
     display: inline-block;
 }
+
+a:hover{
+    box-shadow: 10px lightgray;
+    
+
+}
+
