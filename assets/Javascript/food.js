@@ -66,7 +66,7 @@ $(document).ready(function() {
                 var imageURL = results[i].recipe.image;
 
                 var myImage = $("<img>");
-                myImage.addClass("card-img text-center")
+                myImage.addClass("card-img justify-content-center")
                 myImage.attr("src", imageURL);
                 myImage.attr("alt", "my image");
 
