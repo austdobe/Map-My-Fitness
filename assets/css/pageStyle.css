@@ -25,7 +25,7 @@ h4{
     margin: 10px auto;
     background-color: lightblue;
     border: none;
-
+    display: inline-block;
 }
 .card-title{
     background-color: aqua;
@@ -73,11 +73,6 @@ a{
     overflow: auto;
 }
 
-.card{
-    display: inline-block;
-    border: solid blue 2px;
-}
-
 .recipe-card{
     display:inline-block;
     width:50%;
@@ -88,4 +83,10 @@ a{
     max-width: 200px;
     max-height: 200px;
     margin: 0 auto;
+}
+
+/* This must come after .card in this css file */
+.search-card{
+    border: solid blue 2px;;
+    display: inline-block;
 }
