@@ -54,21 +54,21 @@ $(document).ready(function() {
                 var imageURL = results[i].recipe.image;
 
                 var myImage = $("<img>");
-                myImage.addClass("card-img")
+                myImage.addClass("card-img text-center")
                 myImage.attr("src", imageURL);
                 myImage.attr("alt", "my image");
                 console.log(results[i].recipe.url);
                 console.log(results[i].recipe.label);
 
-                var recipeName = $("<p>");
-                recipeName.text(results[i].recipe.label);
+                var recipe = $("<p>").text(results[i].recipe.label).addClass("text-center");
+                var recipeName = $("<a>").append(recipe);
                 recipeName.addClass("recipeLink card-text");
-                recipeName.attr("a href", results[i].recipe.url).attr('target','_blank');
+                recipeName.attr("href", results[i].recipe.url).attr('target','_blank');
 
-                var recipeCalories = $("<p>");
+                var recipeCalories = $("<p>").addClass("text-center");
                 recipeCalories.text("Calories: " + Math.floor(results[i].recipe.calories) + ". ");
 
-                var recipeServings = $("<p>");
+                var recipeServings = $("<p>").addClass("text-center");
                 recipeServings.text("Servings: " + results[i].recipe.yield + ".");
 
                 divWrapper.append(myImage, recipeName, recipeCalories, recipeServings);
