@@ -94,7 +94,9 @@ a{
 
 a:hover{
     box-shadow: 10px lightgray;
-    
 
 }
 
+#createaccountbutton {
+    width: 140px;
+}
