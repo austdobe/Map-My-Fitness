@@ -7,6 +7,7 @@
     <title>project 1</title>
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/pageStyle.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -15,22 +16,28 @@
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
     <script src="assets/Javascript/login.js"></script>
+    
+
 
 </head>
 <body class="bigContainer">
-    <div class="nav">
-        <img class="logo text-left" src="assets/Images/logo.png">
-        <button class="nav-item"> <a href="index.html">Workouts</a></button>
-        <button class="nav-item"> <a href="Recipes.html">Recipes</a></button>
-        <button class="nav-item"> <a href="Profile.html">Profile</a></button>
-        <button class="nav-item" id="signInModalButton" data-toggle="modal" data-target="#exampleModal"> <a href="#"></a></button>
-    </div>
-    <div class="container">
-        <h1>Workouts</h1>
-    </div>
-  
-  
-    
-    
+        <h2 class="title">Welcome! Let's Map Your Workout</h2>
+        
+            <ul class="text-center">
+                <li class="nav-item">
+                    <a class="title-link" href="workouts.html">View Workouts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="title-link" href="Recipes.html">Search Recipes and Nutritional Values</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="title-link" href="Profile.html">Profile</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="title-link active" id="signInModalButton" data-toggle="modal" data-target="#exampleModal">Sign In</a>
+                </li>
+            </ul>
+
+
 </body>
 </html>

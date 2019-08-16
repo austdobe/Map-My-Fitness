@@ -18,18 +18,28 @@
 
 </head>
 <body class="bigContainer">
-    <div class="nav">
-        <img class="logo text-left" src="assets/Images/logo.png">
-        <button class="nav-item"> <a href="index.html">Workouts</a></button>
-        <button class="nav-item"> <a href="Recipes.html">Recipes</a></button>
-        <button class="nav-item"> <a href="Profile.html">Profile</a></button>
-        <button class="nav-item" id="signInModalButton" data-toggle="modal" data-target="#exampleModal"> <a href="#">Sign in</a></button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a href="index.html"><img class="logo navbar-brand" src="assets/Images/logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" \aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="workouts.html">Workouts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="Recipes.html">Recipes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Profile.html">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" id="signInModalButton" data-toggle="modal" data-target="#exampleModal">Sign In</a>
+        </li>
+        </ul>
     </div>
-    <!-- <div class="container">
-        <h1>Recipes</h1>
-        
-        
-    </div> -->
+    </nav>
 
     <div class="container">
 
