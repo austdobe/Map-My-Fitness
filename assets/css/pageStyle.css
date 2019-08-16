@@ -119,7 +119,12 @@ a{
 
 a:hover{
     box-shadow: 10px lightgray;
-    
-
 }
 
+hr{
+    border-color: blue;
+}
+
+#createaccountbutton {
+    width: 140px;
+}
