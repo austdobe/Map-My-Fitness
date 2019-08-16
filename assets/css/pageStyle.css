@@ -1,14 +1,33 @@
 .bigContainer{
-    background-color: aquamarine;
+    background: lightblue url("https://redhawkgolfandresort.com/wp-content/uploads/2017/02/swim-and-fitness-background.jpg") no-repeat;
+    background-size: cover 100%;
+   
+    
 }
 .container{
-    background-color:lightblue;
+    background-color: linear-gradient(lightblue, white, lightblue);
     height: 900px
 }
 h1{
     font-size: 36px;
     font-weight: bold;
     
+}
+.title{
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 42px;
+    text-align: center; 
+    margin-top: 100px;
+}
+.title-link{
+    text-align: center;
+    font-size: 28px;
+    display: inline;
+    color: black
+    
+}
+.title-log{
+    margin: 0 auto;
 }
 
 h3{
@@ -36,7 +55,7 @@ h4{
     max-height: 300px;
     margin:10px auto;
 }
-.nav{
+.navbar{
     height: 75px;
     background-color: rgb(24, 24, 136)
 }
@@ -64,9 +83,10 @@ button:hover{
     width: 100px;
 
 }
-.nav-item{
+.nav-link{
     text-align: center;
     margin: auto 30px;
+    color: black;
 }
 a{
     font-size: 16px;
