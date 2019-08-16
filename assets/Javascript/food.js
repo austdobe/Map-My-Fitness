@@ -66,7 +66,7 @@ $(document).ready(function() {
                 var imageURL = results[i].recipe.image;
 
                 var myImage = $("<img>");
-                myImage.addClass("card-img text-center")
+                myImage.addClass("card-img justify-content-center")
                 myImage.attr("src", imageURL);
                 myImage.attr("alt", "my image");
 
@@ -81,8 +81,20 @@ $(document).ready(function() {
                 var recipeServings = $("<p>").addClass("text-center");
                 recipeServings.text("Servings: " + results[i].recipe.yield + ".");
 
+                // Functionality to save recipe to favorites
+                var favorite = $("<button>");
+                favorite.text("Add to favorites");
+                favorite.addClass("my-favorites");
+                favorite.addClass("btn");
+                favorite.addClass("btn-primary");
+                favorite.attr("data-recipe-url", results[i].recipe.url);
+                favorite.attr("data-name", results[i].recipe.label);
+                favorite.attr("data-calories", Math.floor(results[i].recipe.calories / results[i].recipe.yield));
+                favorite.attr("data-servings", results[i].recipe.yield);
+                favorite.attr("data-image-url", imageURL);
+
                 // Display recipes on page
-                divWrapper.append(myImage, recipeName, recipeCalories, recipeServings);
+                divWrapper.append(myImage, recipeName, recipeCalories, recipeServings, favorite);
                 $(".display-recipes").append(divWrapper);
 
             }
@@ -167,6 +179,13 @@ $(document).ready(function() {
 
         });
 
+
+    });
+
+    // On click function for favorite recipes
+    $(document).on("click", ".my-favorites", function(event) {
+
+        console.log(this);
 
     });
 

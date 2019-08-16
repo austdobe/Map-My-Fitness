@@ -53,6 +53,9 @@ button{
     color: white;
     overflow: auto;
 }
+.nav-item{
+    color: whitesmoke;
+}
 button:hover{
     background-color: lightblue
 }
@@ -67,13 +70,12 @@ button:hover{
 }
 a{
     font-size: 16px;
-    color: black;
+    color:whitesmoke;
 }
 .infoBox{
     margin: 10px 0;
     overflow: auto;
 }
-
 .recipe-card{
     display:inline-block;
     width:50%;
@@ -85,6 +87,9 @@ a{
     max-height: 200px;
     margin: 0 auto;
 }
+.recipe-link{
+    color: black
+}
 
 /* This must come after .card in this css file */
 .search-card{
@@ -94,7 +99,10 @@ a{
 
 a:hover{
     box-shadow: 10px lightgray;
+}
 
+hr{
+    border-color: blue;
 }
 
 #createaccountbutton {
