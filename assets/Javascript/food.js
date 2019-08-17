@@ -340,9 +340,12 @@ $(document).ready(function() {
         }
         
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> origin
     });
     $(".newSearch").hide()
 });
