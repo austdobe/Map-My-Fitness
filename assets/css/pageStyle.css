@@ -3,41 +3,61 @@
 }
 .titleContainer{
     background: black url("https://s3.amazonaws.com/zenplannerwordpress-stack0/wp-content/uploads/sites/119/2018/07/25103801/Gym-Background-Final.jpg") no-repeat;
-    background-size:100%;
-    background-position: center;
-    
+    background-size:75%;
+    background-position-x: 50%;
+    background-position-y: 150px;
+    z-index: 1;
 }
 .container{
     height: 900px;
     
 }
+
 h1{
     font-size: 36px;
     font-weight: bold;
+    letter-spacing: 2px;
+    color: white
     
 }
 .options{
-    width: 80%;
-    margin: 200px auto;
-
+    padding: 0px;
+    margin: 20px 0 10px auto;
+    position: relative;
+    z-index: 99;
+    
 }
+
 .title{
     font-family: 'Frank Ruhl Libre', serif;
     font-size: 42px;
     text-align: center; 
-    margin-top: 150px;
+    margin-top: 40px;
     color: white;
 }
-.title-link{
+
+.options li a{
+    font-size: 30px;
+    color: transparent;
+    display: block;
     text-align: center;
-    font-size: 28px;
-    display: inline;
-    
+    text-transform: uppercase;
+    text-shadow: 0px 0px 5px #fff;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
 }
-.titleCard{
-    height: 300px;
-    margin: 30px auto;
+.options:hover li a{
+    text-shadow: 0px 0px 5px #0d1a3a;
 }
+.options li a:hover{
+    color: #fff;
+    text-shadow: 0px 0px 1px #fff;
+    padding-left: 10px;
+}
+
 .float-right{
     margin-right: 20px;
 }
