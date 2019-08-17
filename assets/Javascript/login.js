@@ -11,6 +11,8 @@ $(document).ready(function(){
   };
   firebase.initializeApp(config);
   var database = firebase.database();
+
+  var dietLevel = "";
   
   // Changes when user signs in or out
   firebase.auth().onAuthStateChanged(function(user) {
@@ -40,14 +42,7 @@ $(document).ready(function(){
           weight = snapshot.val().weight;
           $("#userP").append("<p>Current Weight : " + weight +"</p>");
           // weightForm();
-          user.updateProfile({
-            displayName: "Jeff" // Change to users name
-          }).then(function() {
-            // Update successful.
-          }).catch(function(error) {
-            alert(error.message);
-            // An error happened.
-          });
+          
         });
       };
 
@@ -75,7 +70,7 @@ $(document).ready(function(){
   function logout(){
     firebase.auth().signOut();
   };
-  
+
   function newUser() {
     var signUpError = false;
     var firstName = $("#validationCustom01").val();
@@ -84,23 +79,14 @@ $(document).ready(function(){
     var email = $("#newUserEmail").val();
     var password = $("#newUserPassword").val();
     var confirmPassword = $("#confirmPasswordInput").val();
-    var ageRange = $("#ageRange").val();
+    var age = $("#ageInput").val();
     var height = $("#heightInput").val();
     var weight = $("#weightInput").val();
     var goals = $("#goalsInput").val();
     var activityLevel = $("#activityLevelInput").val();
     var nutritionToPlan;
-    var dietLevel;
     var agreeToTnC;
-    console.log(firstName);
-    console.log(lastName);
-    console.log(gender);
-    console.log(email);
-    console.log(ageRange);
-    console.log(height);
-    console.log(weight);
-    console.log(goals);
-    console.log(activityLevel);
+    var date =  new Date();
     console.log(nutritionToPlan);
     console.log(dietLevel);
     console.log(agreeToTnC);
@@ -121,20 +107,27 @@ $(document).ready(function(){
       alert("Passwords do not match");
     };
 
-    if (!signUpError) {
-      database.ref("/users/"+firebase.auth().currentUser.uid).set({
-        firstName: firstName,
-        lastName: lastName,
-        gender: gender,
-        ageRange: ageRange,
-        height: height,
-        weight: weight,
-        goals: goals,
-        activityLevel: activityLevel,
-        nutritionToPlan: nutritionToPlan,
-        dietLevel: dietLevel
-      });
-    }
+    setTimeout(function(){ 
+      if (!signUpError) {
+        console.log("test");
+        database.ref("/users/"+firebase.auth().currentUser.uid).set({
+          firstName: firstName,
+          lastName: lastName,
+          gender: gender,
+          age: age,
+          height: height,
+          weight: weight,
+          goals: goals,
+          activityLevel: activityLevel,
+          dietLevel: dietLevel
+        });
+        database.ref("/users/"+firebase.auth().currentUser.uid+"/weights").push({
+          weight: weight,
+          date: date
+        });
+      };
+    }, 3000);
+    
     
   };
 
@@ -220,6 +213,18 @@ $(document).ready(function(){
       // An error happened.
       alert(error.message);
     });
+  });
+
+  $(document).on('click', '.dietButtons', function(event) {
+    event.preventDefault();
+    let id = $(this).attr("id");
+    if (id === "dietButton1"){
+      dietLevel = "Good";
+    } else if (id === "dietButton2"){
+      dietLevel = "Just Ok";
+    } else if (id === "dietButton3"){
+      dietLevel = "Let's not talk about it!"
+    };
   });
   
   $(".container").append(
@@ -308,25 +313,7 @@ $(document).ready(function(){
                           </div>
                           <div class="form-group form-check"></div>
                       </form>
-                      <form action="" style="margin: auto">  
-                          <select name="car" id="ageRange">
-                              <option value="car1">Age Range</option>
-                              <option value="18-30">18-30</option>
-                              <option value="30-45">30-45</option>
-                              <option value="45-Above">45-Above</option>
-                          </select>     
-                          <select name="car" id="heightInput">
-                              <option value="car1">Height</option>
-                              <option value="4'1"-5'0"">4'1"-5'0"</option>
-                              <option value="5'1"-6'0"">5'1"-6'0"</option>
-                              <option value="6'1"-6'10"">6'1"-6'10"</option>
-                          </select>     
-                          <select name="car" id="weightInput">
-                              <option value="car1">Weight</option>
-                              <option value="150-200lbs">150-200lbs</option>
-                              <option value="200-250lbs">200-250lbs</option>
-                              <option value="250-340lbs">250-340lbs</option>
-                          </select>     
+                      <form action="" style="margin: auto">   
                           <select name="car" id="goalsInput">
                               <option value="car1">Goals</option>
                               <option value="Loose More Weight">Loose More Weight</option>
@@ -341,6 +328,18 @@ $(document).ready(function(){
                               <option value="5+ hours/wk">5+ hours/wk</option>
                           </select>  
                       </form>
+                      <div class="form-group">
+                              <label for="exampleWegihtInput">Current Weight (lbs)</label>
+                              <input class="form-control" id="weightInput" placeholder="...">
+                      </div>
+                      <div class="form-group">
+                              <label for="exampleHeightInput">Current Height (5'10")</label>
+                              <input class="form-control" id="heightInput" placeholder="...">
+                      </div>
+                      <div class="form-group">
+                              <label for="exampleAgeInput">Age</label>
+                              <input class="form-control" id="ageInput" placeholder="...">
+                      </div>
                       <form action="" style="margin: auto">
                           <div class="custom-control custom-switch mt-3 mb-3">
                               <input type="checkbox" class="custom-control-input" id="customSwitch1">
@@ -349,9 +348,9 @@ $(document).ready(function(){
                       </form>     
                       <div action="" style="margin: auto" class="btn-group" role="group" aria-label="Basic example">
                           <option action="" class="mr-3" style="margin: auto" selected>How is your diet?</option>
-                          <button type="button" class="btn btn-secondary dietButtons">Good</button>
-                          <button type="button" class="btn btn-secondary dietButtons">Just Ok</button>
-                          <button type="button" class="btn btn-secondary dietButtons">Let's not talk about it!</button>
+                          <button type="button" class="btn btn-secondary dietButtons" id="dietButton1">Good</button>
+                          <button type="button" class="btn btn-secondary dietButtons" id="dietButton2">Just Ok</button>
+                          <button type="button" class="btn btn-secondary dietButtons" id="dietButton3">Let's not talk about it!</button>
                       </div> 
                       <div class="form-group">
                           <div class="form-check mt-3">
