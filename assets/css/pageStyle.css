@@ -125,6 +125,12 @@ hr{
     border-color: blue;
 }
 
-#createaccountbutton {
+#createaccountbutton, #createUserButton {
     width: 140px;
+}
+
+.dietButtons {
+    width: 150px;
+    height: 65px;
+    border-radius: 5px;
 }
