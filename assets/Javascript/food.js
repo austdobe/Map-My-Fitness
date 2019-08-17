@@ -38,8 +38,9 @@ $(document).ready(function() {
 
         // Empties any recipes that are displayed and hides the search boxes
         $(".display-recipes").empty();
-        $(".search-boxes").hide();
-
+        $(".search-card").hide()
+        $(".newSearch").show()
+        
         // Grabs the keyword search, saves it in a variable and then clears the input box
         var recipeQueryTerm = $("#recipe-search").val().trim();
         $("#recipe-search").val("");
@@ -111,8 +112,8 @@ $(document).ready(function() {
 
         // Empties any recipes that are displayed and hides the search boxes
         $(".display-recipes").empty();
-        $(".search-boxes").hide();
-
+        $(".search-card").hide()
+        $(".newSearch").show()
         // Grabs the input values into new variables and then clears input boxes
         var myRecipeTitle = $("#my-recipe-name").val().trim();
         var myRecipeServings = $("#my-recipe-servings").val().trim();
@@ -157,8 +158,8 @@ $(document).ready(function() {
 
         // Empties any recipes that are displayed and hides the search boxes
         $(".display-recipes").empty();
-        $(".search-boxes").hide();
-
+        $(".search-card").hide()
+        $(".newSearch").show()
         // Grabs the input values into new variables and then clears input boxes
         var ingredient = $("#ingredient-entry").val().trim();
         var ingredientEntry = encodeURI(ingredient);
@@ -181,12 +182,16 @@ $(document).ready(function() {
 
 
     });
-
+    $(document).on("click", ".newSearch", function(event){
+        $(".display-recipes").empty();
+        $(".search-card").show()
+        $(".newSearch").hide()
+    })
     // On click function for favorite recipes
     $(document).on("click", ".my-favorites", function(event) {
 
         console.log(this);
 
     });
-
+    $(".newSearch").hide()
 });

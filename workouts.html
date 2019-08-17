@@ -18,40 +18,187 @@
 
 </head>
 <body class="bigContainer">
-    <nav class="navbar">
-            <a href="index.html"><img class="logo" src="assets/Images/logo.png"></a>
-            <h1 class="text-center">Map Your Fitness</h1>
-        </nav>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top">
-        <div class="nav">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" \aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="workouts.html">about</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="workouts.html">Workouts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="Recipes.html">Recipes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Profile.html">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" id="signInModalButton" data-toggle="modal" data-target="#exampleModal">Sign In</a>
-                    </li>
-                </ul>
+    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark ">
+        <div class="row">
+            <div class = "col-4">
+                <a href="index.html"><img class="logo" src="assets/Images/logo.png"></a>
+            </div>
+            <div class="col-8">
+                <h1 class="text-center">Map Your Fitness</h1>
+            </div>
+        </div>
+        <div class="row">
+                <div class="nav">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" \aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" href=".html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#workouts">Workouts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#recipes">Recipes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#profile">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" id="signInModalButton" data-toggle="modal" data-target="#exampleModal">Sign In</a>
+                            </li>
+                            <li class="nav-item newSearch">
+                                <a class="nav-link active">New Search</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
-    <div class="container">
-    </div>
+    <div class="scroll-container">
+        <section id="workouts">
+            <div class="container">
+            </div>
+        </section>
+        <section id="recipes">
+            <div class="container">
 
-    
+                <div class="search-boxes">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <!-- <div class="card-columns"> -->
+
+                                <div class="card search-card">
+                                    <div class="card-body text-center">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="recipe-search"><h3>Search For Recipes</h3></label>
+                                                <input type="text" class="form-control" id="recipe-search" placeholder="What recipes do you want to search for?">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary" id="submit-recipe">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="card search-card">
+                                    <div class="card-body text-center">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="ingredient-entry"><h3>Enter Food To Calculate Nutrition</h3></label>
+                                                <input type="text" class="form-control" id="ingredient-entry" placeholder="Enter a food item">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary" id="submit-ingredient">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            <!-- </div> -->
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="card search-card">
+                                <div class="card-body text-center">
+                                    <form>
+                                        <h3>Enter Your Recipe To Calculate Nutrition</h3>
+                                        <hr>
+                                        <div class="form-group">
+                                            <label for="my-recipe-name"><h3>Recipe Name:</h3></label>
+                                            <input type="text" class="form-control" id="my-recipe-name" placeholder="What is the name of your recipe?">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="my-recipe-servings"><h3>Number Of Servings:</h3></label>
+                                            <input type="text" class="form-control" id="my-recipe-servings" placeholder="Number of servings?">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="my-recipe-ingredients"><h3>Ingredients (one per line)</h3></label>
+                                            <textarea class="form-control" id="my-recipe-ingredients" rows="10" placeholder="eg '4 oz chicken' or '1 large apple'"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" id="submit-my-recipe" href=".display-recipes">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="display-recipes">
+                    <!-- When searching for recipes, the results will display here. -->
+                    </div>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-md-4 text-center">
+                        <table class="table text-center">
+                            <tbody class="display-nutrition">
+                                <!-- When searching for nutrition facts, the results will display here. -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+                
+                
+        </section>
+        <section id="profile">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 card infoBox">
+                        <h1 class="card-title" id="userName"></h1>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="row">
+                                        <img class="profilePic img-thumbnail" src="https://via.placeholder.com/200">
+                                    </div>
+                                    <div class="row">
+                                        <button type="image" class="my-pond btn-block btn-primary" id="changePic" name="filepond">Change Profile Picture</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <h4 class="info">Height: <span id="height"></span> </h4>
+                                    <h4 class="info">weight: <span id="weight"></span> </h4>
+                                    <h4 class="info">Age: <span id="age"></span> </h4>
+                                    <h4 class="info">Activity level: <span id="activity"></span> </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 text-center">    
+                        <div class="card">
+                            <h1 class="card-title">Progress</h1>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 card">
+                        <h1 class="card-title">My Workouts</h1>
+                        <span id="myWorkout"></span>
+                    </div>
+                    <div class="col-sm-6 card">
+                        <h1 class="card-title">My Recipes</h1>
+                        <span id="myRecipes"></span>
+                    </div>
+                </div>
+            </div>
+                
+        </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/Javascript/food.js"></script>
     
 </body>
 </html>

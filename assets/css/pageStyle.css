@@ -1,5 +1,6 @@
 .bigContainer{
-    background-color: black
+    background-color: black;
+    scroll-behavior: smooth;
 }
 .titleContainer{
     background: black url("https://s3.amazonaws.com/zenplannerwordpress-stack0/wp-content/uploads/sites/119/2018/07/25103801/Gym-Background-Final.jpg") no-repeat;
@@ -10,7 +11,8 @@
 }
 .container{
     height: 900px;
-    
+    margin-top: 200px;
+    padding-top: 200px;
 }
 
 h1{
@@ -89,8 +91,13 @@ h4{
     margin:10px auto;
 }
 .navbar{
-    height: 75px;
-    background-color: rgb(53, 53, 53)
+    height: 100px;
+    width: 100%;
+    background-color: rgb(53, 53, 53);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
 }
 .info{
     margin: 20px 0; 
@@ -121,7 +128,7 @@ a{
 }
 .recipe-card{
     display:inline-block;
-    width:50%;
+    width:200px;
     padding-top:10px;
     margin: 0  auto;
 }
@@ -136,8 +143,9 @@ a{
 
 /* This must come after .card in this css file */
 .search-card{
-    border: solid blue 2px;;
+    /* border: solid blue 2px;; */
     display: inline-block;
+    background-color: rgba(169, 169, 169, 0.383)
 }
 
 a:hover{
@@ -145,9 +153,15 @@ a:hover{
 }
 
 hr{
-    border-color: blue;
+    border-color: whitesmoke;
 }
 
 #createaccountbutton {
     width: 140px;
 }
+.display-recipes{
+    overflow: auto;    
+    margin: 20px auto;
+    padding: 100px 10px;
+}
+
