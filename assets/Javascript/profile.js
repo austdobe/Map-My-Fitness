@@ -9,9 +9,14 @@ $(document).ready(function(){
             $("#activity").text(snapshot.val().activityLevel);
 
         });
+        database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/recipes").on("value", function(snapshot) {
+            $("#weight").text(snapshot.val().recipeName);
+            $("#height").text(snapshot.val().height);
+            $("#age").text(snapshot.val().age);
+            $("#activity").text(snapshot.val().activityLevel);
+
+        });
     });
-    $(document).on('click', '.my-favorites', function(event) {
-        event.preventDefault();
-        console.log($(this).attr("data-recipe-url"))
+    
 
 });

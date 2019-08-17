@@ -1,33 +1,67 @@
 .bigContainer{
-    background: lightblue url("https://redhawkgolfandresort.com/wp-content/uploads/2017/02/swim-and-fitness-background.jpg") no-repeat;
-    background-size: cover 100%;
-   
-    
+    background-color: black;
+    scroll-behavior: smooth;
+}
+.titleContainer{
+    background: black url("https://s3.amazonaws.com/zenplannerwordpress-stack0/wp-content/uploads/sites/119/2018/07/25103801/Gym-Background-Final.jpg") no-repeat;
+    background-size:75%;
+    background-position-x: 50%;
+    background-position-y: 150px;
+    z-index: 1;
 }
 .container{
-    background-color: linear-gradient(lightblue, white, lightblue);
-    height: 900px
+    height: 900px;
+    margin-top: 200px;
+    padding-top: 200px;
 }
+
 h1{
     font-size: 36px;
     font-weight: bold;
+    letter-spacing: 2px;
+    color: white
     
 }
+.options{
+    padding: 0px;
+    margin: 20px 0 10px auto;
+    position: relative;
+    z-index: 99;
+    
+}
+
 .title{
     font-family: 'Frank Ruhl Libre', serif;
     font-size: 42px;
     text-align: center; 
-    margin-top: 100px;
+    margin-top: 40px;
+    color: white;
 }
-.title-link{
+
+.options li a{
+    font-size: 30px;
+    color: transparent;
+    display: block;
     text-align: center;
-    font-size: 28px;
-    display: inline;
-    color: black
-    
+    text-transform: uppercase;
+    text-shadow: 0px 0px 5px #fff;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
 }
-.title-log{
-    margin: 0 auto;
+.options:hover li a{
+    text-shadow: 0px 0px 5px #0d1a3a;
+}
+.options li a:hover{
+    color: #fff;
+    text-shadow: 0px 0px 1px #fff;
+    padding-left: 10px;
+}
+
+.float-right{
+    margin-right: 20px;
 }
 
 h3{
@@ -38,17 +72,18 @@ h4{
     font-size: 15px;
 }
 .card{
+    background-color:rgb(0, 0, 0, 0);
     font-size: 16px;
     width: 100%;
     height: auto;
     margin: 10px auto;
-    background-color: lightblue;
     border: none;
     display: inline-block;
+    color: white;
 }
 .card-title{
-    background-color: aqua;
     font-size: 20px;
+    text-align: center
 }
 .profilePic{
     max-width: 300px;
@@ -56,28 +91,23 @@ h4{
     margin:10px auto;
 }
 .navbar{
-    height: 75px;
-    background-color: rgb(24, 24, 136)
+    height: 100px;
+    width: 100%;
+    background-color: rgb(53, 53, 53);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
 }
 .info{
     margin: 20px 0; 
     text-align: left;
 }
-button{
-    background-color: rgba(24, 24, 136);
-    border: none;
-    margin: auto 10px;
-    height: 50px;
-    width: 100px;
-    color: white;
-    overflow: auto;
-}
+
 .nav-item{
     color: whitesmoke;
 }
-button:hover{
-    background-color: lightblue
-}
+
 .logo{
     height: 75px;
     width: 100px;
@@ -98,7 +128,7 @@ a{
 }
 .recipe-card{
     display:inline-block;
-    width:50%;
+    width:200px;
     padding-top:10px;
     margin: 0  auto;
 }
@@ -113,8 +143,9 @@ a{
 
 /* This must come after .card in this css file */
 .search-card{
-    border: solid blue 2px;;
+    /* border: solid blue 2px;; */
     display: inline-block;
+    background-color: rgba(169, 169, 169, 0.383)
 }
 
 a:hover{
@@ -122,15 +153,23 @@ a:hover{
 }
 
 hr{
-    border-color: blue;
+    border-color: whitesmoke;
 }
 
 #createaccountbutton, #createUserButton {
     width: 140px;
 }
+.display-recipes{
+    overflow: auto;    
+    margin: 20px auto;
+    padding: 100px 10px;
+}
+
+
 
 .dietButtons {
     width: 150px;
     height: 65px;
     border-radius: 5px;
 }
+
