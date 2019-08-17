@@ -331,7 +331,7 @@ $(document).ready(function() {
             }).then((snap) => {
                 const key = snap.key;
                 console.log(key);
-             });
+            });
             $(this).attr("data-state","favorited");
             $(this).attr("data-key",key);
             $(this).text("Remove");
@@ -340,12 +340,6 @@ $(document).ready(function() {
         }
         
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> origin
     });
     $(".newSearch").hide()
 });

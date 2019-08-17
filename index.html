@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>project 1</title>
+    <title>Map Your Fitness</title>
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/pageStyle.css">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="row">
-                <div class="nav">
+                <div class="nav col-12 text-center">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" \aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
@@ -47,7 +47,7 @@
                                 <a class="nav-link active" href="#profile">Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" id="signInModalButton" data-toggle="modal" data-target="#exampleModal">Sign In</a>
+                                <a class="nav-link active" id="signInModalButton" data-toggle="modal" data-target="#exampleModal" href="#">Sign In</a>
                             </li>
                             <li class="nav-item newSearch">
                                 <a class="nav-link active" href="#recipes">New Search</a>
@@ -91,7 +91,7 @@
                     <div class="us">
                         <p>Do you find it difficult to start a workout plan? Do you have an understanding of how to workout, but you just arent sure how to push your muscles in everyway? Are you a health enthusiast and are looking for good wholesome recipes from a reliable source?</p>
                         <p>We at map my fitness completely understand the struggle you are going through. We find that nutrition and excercise go hand in hand. You need both to give your muscles everything they need to flurish</p>
-                        <p>On this webpage we are providing all of the resources you will need to get you the body you want. It will take time and dedication but you can accomplish big things. We are hear to help you along the way.</p>
+                        <p>We hope to provide all of the resources you will need to get you the body you want. It will take time and dedication but you can accomplish big things. We are hear to help you along the way.</p>
                     </div>
                 </div>
             </div>
@@ -200,16 +200,21 @@
                                         <img class="profilePic img-thumbnail" src="https://via.placeholder.com/200">
                                     </div>
                                     <div class="row">
-                                        <button type="image" class="my-pond btn-block btn-primary" id="changePic" name="filepond">Change Profile Picture</button>
+                                        <button type="image" class="btn btn1 btn-primary" id="changePic" name="filepond">Change Profile Picture</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="card">
-                                    <h4 class="info">Height: <span id="height"></span> </h4>
-                                    <h4 class="info">weight: <span id="weight"></span> </h4>
-                                    <h4 class="info">Age: <span id="age"></span> </h4>
-                                    <h4 class="info">Activity level: <span id="activity"></span> </h4>
+                                    <div class="row">
+                                        <h4 class="info col-12">Height: <span id="height"></span> </h4>
+                                        <h4 class="info col-12">weight: <span id="weight"></span> </h4>
+                                        <h4 class="info col-12">Age: <span id="age"></span> </h4>
+                                        <h4 class="info col-12">Activity level: <span id="activity"></span> </h4>
+                                    </div>
+                                    <div class="row">
+                                            <button type="image" class="btn btn1 btn-primary" id="edit" name="filepond">Change Your Information</button>
+                                        </div>
                                 </div>
                             </div>
                         </div>
