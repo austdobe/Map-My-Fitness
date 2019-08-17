@@ -326,11 +326,5 @@ $(document).ready(function() {
 
 
     });
-<<<<<<< HEAD
-
-
-
-=======
     $(".newSearch").hide()
->>>>>>> 63a29bae4da09baaeff8337b6e4e81162e8ac8e2
 });
