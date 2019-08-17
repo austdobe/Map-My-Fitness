@@ -1,9 +1,12 @@
+html{
+    scroll-behavior: smooth;
+}
 .bigContainer{
     background-color: black;
     scroll-behavior: smooth;
 }
 .titleContainer{
-    background: black url("https://s3.amazonaws.com/zenplannerwordpress-stack0/wp-content/uploads/sites/119/2018/07/25103801/Gym-Background-Final.jpg") no-repeat;
+    background: black url("") no-repeat;
     background-size:75%;
     background-position-x: 50%;
     background-position-y: 150px;
@@ -11,8 +14,8 @@
 }
 .container{
     height: 900px;
-    margin-top: 200px;
-    padding-top: 200px;
+    margin-top: 100px;
+    padding-top: 100px;
 }
 
 h1{
@@ -130,7 +133,7 @@ a{
     display:inline-block;
     width:200px;
     padding-top:10px;
-    margin: 0  auto;
+    margin: auto  auto;
 }
 .card-img{
     max-width: 200px;
@@ -171,5 +174,14 @@ hr{
     width: 150px;
     height: 65px;
     border-radius: 5px;
+}
+#about{
+    padding-top: 100px;
+}
+.us{
+    margin: 20px 20px;
+    color: whitesmoke;
+    background-color: rgba(169, 169, 169, 0.383);
+    padding: 10px 20px;
 }
 
