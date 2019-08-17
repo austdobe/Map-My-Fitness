@@ -307,9 +307,30 @@ $(document).ready(function() {
     })
     // On click function for favorite recipes
     $(document).on("click", ".my-favorites", function(event) {
-
         console.log(this);
+        var recipeUrl = $(this).attr("data-recipe-url");
+        var recipeName = $(this).attr("data-name");
+        var recipeCalories = $(this).attr("data-calories");
+        var recipeServings = $(this).attr("data-servings");
+        var recipeImageUrl = $(this).attr("data-image-url");
+        var database = firebase.database();
+
+        database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/recipes").push({
+            recipeUrl: recipeUrl,
+            recipeName: recipeName,
+            recipeCalories: recipeCalories,
+            recipeServings: recipeServings,
+            recipeImageUrl: recipeImageUrl
+        });
+
+
 
     });
+<<<<<<< HEAD
+
+
+
+=======
     $(".newSearch").hide()
+>>>>>>> 63a29bae4da09baaeff8337b6e4e81162e8ac8e2
 });
