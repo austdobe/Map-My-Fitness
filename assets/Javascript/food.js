@@ -307,30 +307,42 @@ $(document).ready(function() {
     })
     // On click function for favorite recipes
     $(document).on("click", ".my-favorites", function(event) {
-        console.log(this);
         var recipeUrl = $(this).attr("data-recipe-url");
         var recipeName = $(this).attr("data-name");
         var recipeCalories = $(this).attr("data-calories");
         var recipeServings = $(this).attr("data-servings");
         var recipeImageUrl = $(this).attr("data-image-url");
+        var favoriteState = $(this).attr("data-state");
         var database = firebase.database();
+        if (favoriteState === "favorited") {
+            console.log("favorited");
+            $(this).text("Add to favorites");
+            $(this).attr("class","my-favorites btn btn-primary");
+            $(this).attr("data-state","notFavorited");
+            database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/recipes").child($(this).attr("data-key")).remove();
+        } else {
+            var key;
+            database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/recipes").push({
+                recipeUrl: recipeUrl,
+                recipeName: recipeName,
+                recipeCalories: recipeCalories,
+                recipeServings: recipeServings,
+                recipeImageUrl: recipeImageUrl
+            }).then((snap) => {
+                const key = snap.key;
+                console.log(key);
+             });
+            $(this).attr("data-state","favorited");
+            $(this).attr("data-key",key);
+            $(this).text("Remove");
+            $(this).attr("class","my-favorites btn btn-light");
 
-        database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/recipes").push({
-            recipeUrl: recipeUrl,
-            recipeName: recipeName,
-            recipeCalories: recipeCalories,
-            recipeServings: recipeServings,
-            recipeImageUrl: recipeImageUrl
-        });
+        }
+        
+
 
 
 
     });
-<<<<<<< HEAD
-
-
-
-=======
     $(".newSearch").hide()
->>>>>>> 63a29bae4da09baaeff8337b6e4e81162e8ac8e2
 });
