@@ -318,5 +318,6 @@ $(document).ready(function() {
         $(".search-card").show()
         $(".newSearch").hide()
     })
+  
     $(".newSearch").hide()
 });

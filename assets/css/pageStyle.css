@@ -168,7 +168,10 @@ hr{
     padding: 100px 10px;
 }
 
-
+.btn1{
+    margin: 0 auto;
+    width: 75%;
+}
 
 .dietButtons {
     width: 150px;
