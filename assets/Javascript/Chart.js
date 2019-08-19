@@ -20,7 +20,7 @@ $(document).ready(function(){
                             <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="">
                             </div>
                             <div>
-                            <input class="btn btn-primary" type="submit" value="Submit">
+                            <input class="btn btn-primary" id="chartInput" type="submit" value="Submit">
                             </div>
                         </form>
                     </div>
@@ -34,7 +34,7 @@ $(document).ready(function(){
     var dates=JSON.parse(localStorage.getItem("dates")) || []
     
     // 3. Click Handler
-    $(".btn").on("click", function(events) {
+    $("#chartInput").on("click", function(events) {
     events.preventDefault();
     // Pull the user entered data, parse as numbers, save as variables
     var weight=parseInt($("#formGroupExampleInput").val().trim())

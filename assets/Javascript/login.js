@@ -1,6 +1,10 @@
 $(document).ready(function(){
+  // Global variables
   var weight;
   var signUpError;
+  var dietLevel = "";
+
+  // Sets update firebase link
   var config = {
     apiKey: "AIzaSyCqwaY-3wWYY4jadfbnn8bv2zPEjZA2Moo",
     authDomain: "project1-6e88d.firebaseapp.com",
@@ -12,8 +16,6 @@ $(document).ready(function(){
   };
   firebase.initializeApp(config);
   var database = firebase.database();
-
-  var dietLevel = "";
   
   // Changes when user signs in or out
   firebase.auth().onAuthStateChanged(function(user) {
@@ -27,25 +29,20 @@ $(document).ready(function(){
       // User is signed in.
       var user = firebase.auth().currentUser;
       var userId = firebase.auth().currentUser.uid;
+
+      // Adds weight input form to modal
       weightForm();
 
       // Updates Navbar on Sign In
       $("#signInModalButton").text('Sign Out');
-
       
-        
-      var email_id = user.email;
-      
+      // Displays user info on login modal
       database.ref("/users/"+userId).on("value", function(snapshot) {
-        
         $("#userP").empty();
         $("#userWelcome").text("Welcome " + snapshot.val().firstName + "!");
         weight = snapshot.val().weight;
         $("#userP").append("<p>Current Weight : " + weight +"</p>");
-        // weightForm();
-        
       });
-      
 
     } else { // No user is signed in.
       // Updates Modal Divs Display
@@ -56,26 +53,30 @@ $(document).ready(function(){
       // Updates sign up vs user info modals since they share the same ids
       createSignUpModal();
       $("#UpdateUserInfoModal").remove();
+
       // Updates Navbar on Sign Out
       $("#signInModalButton").text('Sign In');
     }
   });
 
+  // Login fucntion called when login button is clicked
   function login(){
     var userEmail = $("#emailInput").val();
     var userPassword = $("#passwordInput").val();
     firebase.auth().signInWithEmailAndPassword(userEmail, userPassword).catch(function(error) {
-      var errorCode = error.code;
       var errorMessage = error.message;
       window.alert("Error : " + errorMessage);
     });
   };
 
+  // Function called when logout button is clicked
   function logout(){
     firebase.auth().signOut();
   };
   
+  // Updates user info to firebase and checks validation
   function userInfo() {
+    // Removes sign up alert and validation from previous login attempt
     $("#signUpAlert").empty();
     $("#firstNameValidation").attr("class","invalid-feedback");
     $("#lastNameValidation").attr("class","invalid-feedback");
@@ -86,8 +87,9 @@ $(document).ready(function(){
     $("#heightValidation").attr("class","invalid-feedback");
     $("#ageValidation").attr("class","invalid-feedback");
     $("#dietValidation").attr("class","invalid-feedback");
-    
     signUpError = false;
+
+    // Grabs info from sign in form
     var firstName = $("#validationCustom01").val().trim();
     var lastName =$("#validationCustom02").val().trim();
     var gender = $("#gender").val().trim();
@@ -99,38 +101,42 @@ $(document).ready(function(){
     var nutritionToPlan = $("#customSwitch1").is(':checked');
     var date =  moment().format('l');
     
-    
+    // Below validation checks show invalid feedback if invalid entry
+    // Checks if first name input is empty
     if (firstName==="") {
       $("#firstNameValidation").attr("class","invalid-feedback d-block");
     };
 
+    // Checks if last name input is empty
     if (lastName==="") {
       $("#lastNameValidation").attr("class","invalid-feedback d-block");
     };
 
+    // Checks if gender is selected
     if (gender === "") {
       signUpError = true;
       $("#genderValidation").attr("class","invalid-feedback d-block");
     };
-    
-    
 
+    // Checks if a goal is selected
     if (goals === "car1") {
       signUpError = true;
       $("#goalsValidation").attr("class","invalid-feedback d-block");
     };
 
+    // Checks if activty level is selected
     if (activityLevel === "car1") {
       signUpError = true;
       $("#activityLevelValidation").attr("class","invalid-feedback d-block");
     };
 
-    console.log(weight);
+    // Checks if weight is a valid positive integer
     if (!(Number.isInteger(parseFloat(weight)) && parseFloat(weight)>0)) {
       signUpError = true;
       $("#weightValidation").attr("class","invalid-feedback d-block");
     };
 
+    // Checks if height is a valid input
     if ((height.slice(1,2)==="'")&&(height.charAt(height.length-1)==='"')){
       if(height.length === 5) {
         var inches = parseFloat(height.slice(2,4));
@@ -142,26 +148,28 @@ $(document).ready(function(){
       heightValid = false;
     };
 
+    // Shows height invalid feedback
     if (!heightValid){
       signUpError = true;
       $("#heightValidation").attr("class","invalid-feedback d-block");
     }
 
-    if (!(Number.isInteger(parseFloat(age)) && 120>parseFloat(age)>0)) {
+    // Checks if age is valid input
+    if (!(Number.isInteger(parseFloat(age)) && parseFloat(age)>0)) {
       signUpError = true;
       $("#ageValidation").attr("class","invalid-feedback d-block");
     };
 
-    
-
+    // Checks if diet level is selected
     if(dietLevel ==="") {
       signUpError = true;
       $("#dietValidation").attr("class","invalid-feedback d-block");
     };
 
+    // Updates info to firebase weights 3 seconds for new firebase user creation
     setTimeout(function(){ 
+      // Checks if any sign up validation errors
       if (!signUpError) {
-        console.log("test");
         database.ref("/users/"+firebase.auth().currentUser.uid).update({
           firstName: firstName,
           lastName: lastName,
@@ -178,6 +186,7 @@ $(document).ready(function(){
           weight: weight,
           date: date
         }).then(function(){
+          // Shows success if database updated successfully
           var updateSuccessDiv = $("<div>");
           updateSuccessDiv.attr("class","alert alert-success");
           updateSuccessDiv.attr("role","alert");
@@ -188,37 +197,46 @@ $(document).ready(function(){
     }, 3000);
   };
 
-
+  // Validation and firebase authentication for new user
   function newUser() {
+
+    // Calls user info function that updates database
     userInfo();
 
+    // Removes sign up alert and validation from previous sign up attempt
     $("#emailValidation").attr("class","invalid-feedback");
     $("#passwordValidation").attr("class","invalid-feedback");
     $("#tncValidation").attr("class","invalid-feedback");
 
+    // Grabs info from form
     var email = $("#newUserEmail").val().trim();
     var password = $("#newUserPassword").val().trim();
     var confirmPassword = $("#confirmPasswordInput").val().trim();
     var agreeToTnC = $("#invalidCheck").is(":checked");
 
+    // Below checks validation and shows invalid feedback
+    // Checks if email is valid
     if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){
       signUpError = true;
       $("#emailValidation").attr("class","invalid-feedback d-block");
     };
     
+    // Checks if passwords match
     if (password != confirmPassword) {
       signUpError = true;
       $("#passwordValidation").attr("class","invalid-feedback d-block");
     };
 
+    // Checks if terms and conditions are agreed to
     if (!agreeToTnC) {
       signUpError = true;
       $("#tncValidation").attr("class","invalid-feedback d-block");
     };
 
+    // Attempts to create new user if no invalid input
     if(!signUpError) {
       firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-        // Handle Errors here.
+        // Displays any sign up errors from firebase
         var errorCode = error.code;
         var errorMessage = error.message;
         var signUpErrorDiv = $("<div>");
@@ -231,6 +249,7 @@ $(document).ready(function(){
     };
   };
 
+  // Logs new user weight to firebase
   function weightLog() {
     var weight = $("#weightInput2").val();
     database.ref("/users/"+firebase.auth().currentUser.uid).update({
@@ -238,6 +257,7 @@ $(document).ready(function(){
     });
   };
 
+  // Creates weight input form displayed on logged in user modal
   function weightForm() {
     var form = $("<form>");
     form.attr("id","weightForm");
@@ -286,7 +306,7 @@ $(document).ready(function(){
     weightLog();
   });
   
-  // Displays signin in div when clicked
+  // Displays sign in div when clicked
   $(document).on('click', '#signInDivButton', function(event) {
     event.preventDefault();
     $("#loginDiv").show();
@@ -318,6 +338,7 @@ $(document).ready(function(){
     });
   });
 
+  // Updates diet button to current selection when user info modal is displayed
   $(document).on("click", "#updateUserInfo", function(event) {
     event.preventDefault();
     database.ref("/users/"+firebase.auth().currentUser.uid).once("value", function(snapshot) {
@@ -325,6 +346,7 @@ $(document).ready(function(){
     });
   });
 
+  // Updates diet buttons when clicked
   $(document).on('click', '.dietButtons', function(event) {
     event.preventDefault();
     let id = $(this).attr("id");
@@ -344,8 +366,7 @@ $(document).ready(function(){
     };
   });
 
-  
-
+  // Adds sign in/out modal to html
   $(".container").append(
     `<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
@@ -409,6 +430,7 @@ $(document).ready(function(){
   
   );
 
+  // Adds sign up modal info. Used since ids are shared between sign in form and info update form on profile
   function createSignUpModal() {
     $("#newUserDiv").append(
     `<h3>New User</h3>

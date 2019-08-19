@@ -5,8 +5,11 @@ $(document).ready(function(){
     // Updates profile info when first loading page
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
+            // Creates user info update modal once logged in and removed new user sign up form due to id conflicts
             createUpdateInfoModal();
             $("#newUserDiv").empty();
+
+            // Updates recipes favorites on login
             favoritesUpdate();
             database.ref("/users/"+firebase.auth().currentUser.uid).on("value", function(snapshot) {
                 $("#weight").text(snapshot.val().weight);
@@ -132,6 +135,7 @@ $(document).ready(function(){
         };  
     });
 
+    // Grabs user info from firebase when user info modal is opened
     $(document).on("click", "#updateUserInfo", function(event) {
         event.preventDefault();
         database.ref("/users/"+firebase.auth().currentUser.uid).once("value", function(snapshot) {
@@ -140,11 +144,12 @@ $(document).ready(function(){
             $("#gender").val(snapshot.val().gender);
             $("#ageInput").val(snapshot.val().age);
             $("#heightInput").val(snapshot.val().height);
-            console.log(snapshot.val().weight);
             $("#weightInput").val(snapshot.val().weight);
             $("#goalsInput").val(snapshot.val().goals);
             $("#activityLevelInput").val(snapshot.val().activityLevel);
             $("#customSwitch1").attr("checked",snapshot.val().nutritionToPlan);
+
+            // Updates diet button display
             if (snapshot.val().dietLevel === "Good"){
                 $("#dietButton1").attr("class","btn btn-primary dietButtons");
             } else if (snapshot.val().dietLevel === "Just Ok"){
@@ -155,6 +160,7 @@ $(document).ready(function(){
         });
     });
 
+    // Function to create user info modal once signed in
     function createUpdateInfoModal() {
         $(".container").append(
             `<div class="modal fade" id="UpdateUserInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
