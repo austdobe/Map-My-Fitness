@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+    var database = firebase.database();
     // App IDs and API keys for queries
     var recipeAppID = "36ebdbad";
     var recipeAPIKey = "6800e54637175837e7457dddad91fdf9";
@@ -211,7 +212,19 @@ $(document).ready(function() {
                 divWrapper.append(myImage, recipeName, recipeCalories, recipeServings, favorite);
                 $(".display-recipes").append(divWrapper);
 
-            }
+            };
+            database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/recipes").once("value", function(parent) {
+                parent.forEach(function(snapshot) {
+                    let favoriteButton = $(document).find("[data-recipe-url = '" + snapshot.val().recipeUrl.toString()+"']");
+                    if(favoriteButton) {
+                        $(favoriteButton).attr("data-state","favorited");
+                        $(favoriteButton).text("Remove");
+                        $(favoriteButton).attr("class","my-favorites btn btn-light");
+                        $(favoriteButton).attr("data-key",snapshot.key);
+                    };
+                });
+            });
+        
 
         });
 
@@ -305,41 +318,6 @@ $(document).ready(function() {
         $(".search-card").show()
         $(".newSearch").hide()
     })
-    // On click function for favorite recipes
-    $(document).on("click", ".my-favorites", function(event) {
-        var recipeUrl = $(this).attr("data-recipe-url");
-        var recipeName = $(this).attr("data-name");
-        var recipeCalories = $(this).attr("data-calories");
-        var recipeServings = $(this).attr("data-servings");
-        var recipeImageUrl = $(this).attr("data-image-url");
-        var favoriteState = $(this).attr("data-state");
-        var database = firebase.database();
-        if (favoriteState === "favorited") {
-            console.log("favorited");
-            $(this).text("Add to favorites");
-            $(this).attr("class","my-favorites btn btn-primary");
-            $(this).attr("data-state","notFavorited");
-            database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/recipes").child($(this).attr("data-key")).remove();
-        } else {
-            var key;
-            database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/recipes").push({
-                recipeUrl: recipeUrl,
-                recipeName: recipeName,
-                recipeCalories: recipeCalories,
-                recipeServings: recipeServings,
-                recipeImageUrl: recipeImageUrl
-            }).then((snap) => {
-                const key = snap.key;
-                console.log(key);
-            });
-            $(this).attr("data-state","favorited");
-            $(this).attr("data-key",key);
-            $(this).text("Remove");
-            $(this).attr("class","my-favorites btn btn-light");
-
-        }
-        
-
-    });
+  
     $(".newSearch").hide()
 });
