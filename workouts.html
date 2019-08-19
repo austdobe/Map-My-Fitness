@@ -14,8 +14,10 @@
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="assets/Javascript/login.js"></script>
     <script src="assets/Javascript/profile.js"></script>
+    
 
 
 </head>
@@ -165,13 +167,14 @@
                                     </div>
                                     <div class="row">
                                         <button type="image" class="my-pond btn-block btn-primary" id="changePic" name="filepond">Change Profile Picture</button>
+                                        <button class="my-pond btn-block btn-primary" id="updateUserInfo" data-toggle="modal" data-target="#UpdateUserInfoModal">Update Info</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="card">
                                     <h4 class="info">Height: <span id="height"></span> </h4>
-                                    <h4 class="info">weight: <span id="weight"></span> </h4>
+                                    <h4 class="info">Weight: <span id="weight"></span> </h4>
                                     <h4 class="info">Age: <span id="age"></span> </h4>
                                     <h4 class="info">Activity level: <span id="activity"></span> </h4>
                                 </div>

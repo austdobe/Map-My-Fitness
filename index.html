@@ -14,7 +14,11 @@
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="assets/Javascript/login.js"></script>
+    <script src="assets/Javascript/profile.js"></script>
+    <script src="https://cdn.plot.ly/plotly-1.2.0.min.js"></script>
+    <script src="assets/Javascript/Chart.js"></script>
 
 </head>
 <body class="bigContainer">
@@ -201,6 +205,8 @@
                                     </div>
                                     <div class="row">
                                         <button type="image" class="btn btn1 btn-primary" id="changePic" name="filepond">Change Profile Picture</button>
+                                        <button class="btn btn1 btn-primary mt-2" id="updateUserInfo" data-toggle="modal" data-target="#UpdateUserInfoModal">Update Info</button>
+                                        <button class="btn btn1 btn-primary mt-2" id="logNewWeight" data-toggle="modal" data-target="#logNewWeightModal">Log Weight</button>
                                     </div>
                                 </div>
                             </div>
@@ -208,21 +214,19 @@
                                 <div class="card">
                                     <div class="row">
                                         <h4 class="info col-12">Height: <span id="height"></span> </h4>
-                                        <h4 class="info col-12">weight: <span id="weight"></span> </h4>
+                                        <h4 class="info col-12">Weight: <span id="weight"></span> </h4>
                                         <h4 class="info col-12">Age: <span id="age"></span> </h4>
                                         <h4 class="info col-12">Activity level: <span id="activity"></span> </h4>
                                     </div>
-                                    <div class="row">
-                                            <button type="image" class="btn btn1 btn-primary" id="edit" name="filepond">Change Your Information</button>
-                                        </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 text-center">    
-                        <div class="card">
+                        <div class="card progressCard">
                             <h1 class="card-title">Progress</h1>
-                            
+                            <div id="chart"></div>
+                            <div id="tester" style="width:600px;height:250px;"></div>
                         </div>
                     </div>
                 </div>
