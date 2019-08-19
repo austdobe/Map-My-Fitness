@@ -162,7 +162,7 @@ $(document).ready(function(){
     setTimeout(function(){ 
       if (!signUpError) {
         console.log("test");
-        database.ref("/users/"+firebase.auth().currentUser.uid).set({
+        database.ref("/users/"+firebase.auth().currentUser.uid).update({
           firstName: firstName,
           lastName: lastName,
           gender: gender,
@@ -233,7 +233,7 @@ $(document).ready(function(){
 
   function weightLog() {
     var weight = $("#weightInput2").val();
-    database.ref("/users/"+firebase.auth().currentUser.uid).set({
+    database.ref("/users/"+firebase.auth().currentUser.uid).update({
       weight: weight
     });
   };
