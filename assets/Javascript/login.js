@@ -375,7 +375,7 @@ $(document).ready(function(){
   });
 
   // Adds sign in/out modal to html
-  $(".container").append(
+  $(document.body).append(
     `<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -590,30 +590,31 @@ $(document).ready(function(){
 
 
   // Handles "Change Picture" button on profile page - opens up modal.
-  $(document).on("click", "#changePic", function() {
-    $(".container").append(
-        `<div class="modal fade" id="changeProfilePicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                      <h3 class="text-center extra-margin">Update Photo</h3>
-                        <form action="" style="width: 300px; margin: auto">
-                          <div id="filesubmit">
-                            <input type="file" id="file-select" accept="image/*"/>
-                            <button class="btn btn1 btn-primary" id="file-submit">SUBMIT</button>
-                          </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>`
-    );
+  
+  $(document.body).append(
+      `<div class="modal fade" id="changeProfilePicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <h3 class="text-center extra-margin">Update Photo</h3>
+                      <form action="" style="width: 300px; margin: auto">
+                        <div id="filesubmit">
+                          <input type="file" class="mb-3" id="file-select" accept="image/*"/>
+                          <button class="btn btn1 btn-primary" id="file-submit">SUBMIT</button>
+                        </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>`
+  );
 
+  $(document).on("click", "#changePic", function() {
     $("#file-select").on("change", handleFileUploadChange);
     $("#file-submit").on("click", handleFileUploadSubmit);
   
@@ -669,7 +670,6 @@ $(document).ready(function(){
   function profilePicGen() {
     database.ref("/users/"+firebase.auth().currentUser.uid).once("value", function(snapshot) {
       profilePicURL = snapshot.val().profilePicURL;
-      console.log(profilePicURL);
     }).then(function(){
       var profilePicIMG = $("<img>");
       profilePicIMG.attr("src", profilePicURL);

@@ -174,11 +174,9 @@ $(document).ready(function(){
         });
     });
 
-    
-
     // Function to create user info modal once signed in
     function createUpdateInfoModal() {
-        $(".container").append(
+        $(document.body).append(
             `<div class="modal fade" id="UpdateUserInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
