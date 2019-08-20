@@ -3,6 +3,7 @@ $(document).ready(function(){
   var weight;
   var signUpError;
   var dietLevel = "";
+  var profilePicFileName = "";
 
   // Sets update firebase link
   var config = {
@@ -10,12 +11,16 @@ $(document).ready(function(){
     authDomain: "project1-6e88d.firebaseapp.com",
     databaseURL: "https://project1-6e88d.firebaseio.com",
     projectId: "project1-6e88d",
-    storageBucket: "",
+    storageBucket: "simple-image-upload.appspot.com",
     messagingSenderId: "1010093316178",
     appId: "1:1010093316178:web:dacd8997acea26b7"
   };
   firebase.initializeApp(config);
   var database = firebase.database();
+
+  // Initializes the storage bucket for photos
+  var storageService = firebase.storage();
+  var storageRef = storageService.ref();
   
   // Changes when user signs in or out
   firebase.auth().onAuthStateChanged(function(user) {
@@ -579,4 +584,90 @@ $(document).ready(function(){
               </div>`
     );
   };
+
+
+  // Handles "Change Picture" button on profile page - opens up modal.
+  $(document).on("click", "#changePic", function() {
+    $(".container").append(
+        `<div class="modal fade" id="changeProfilePicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                      <h3 class="text-center extra-margin">Update Photo</h3>
+                        <form action="" style="width: 300px; margin: auto">
+                          <div id="filesubmit">
+                            <input type="file" id="file-select" accept="image/*"/>
+                            <button class="btn btn1 btn-primary" id="file-submit">SUBMIT</button>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    );
+
+    $("#file-select").on("change", handleFileUploadChange);
+    $("#file-submit").on("click", handleFileUploadSubmit);
+  
+    let selectedFile;
+    function handleFileUploadChange(event) {
+      selectedFile = event.target.files[0];
+    }
+  
+    function handleFileUploadSubmit(event) {
+      event.preventDefault;
+      var uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+      uploadTask.on('state_changed', (snapshot) => {
+      // Observe state change events such as progress, pause, and resume
+      }, (error) => {
+        // Handle unsuccessful uploads
+        console.log(error);
+      }, () => {
+         // Do something once upload is complete
+         profilePicFileName = selectedFile.name;
+         console.log(profilePicFileName);
+         console.log('success');
+
+
+         storageRef.child('images/' + profilePicFileName).getDownloadURL().then(function(profilePicURL) {
+          // `profilePicURL` is the download URL for 'images/filename'
+    
+          // This can be downloaded directly:
+          var xhr = new XMLHttpRequest();
+          xhr.responseType = 'blob';
+          xhr.onload = function(event) {
+          var blob = xhr.response;
+          };
+          xhr.open('GET', profilePicURL);
+          xhr.send();
+          console.log(profilePicURL);
+    
+          var profilePicIMG = $("<img>");
+          profilePicIMG.attr("src", profilePicURL);
+          profilePicIMG.attr("width", "200");
+          $(".profilePic").prepend(profilePicIMG);
+      
+          // Or inserted into an <img> element:
+          var img = document.getElementById('myimg');
+          img.src = url;
+        }).catch(function(error) {
+          // Handle any errors
+        });
+
+
+      });
+    }
+
+
+  }); // End of on-click function for change profile picture from profile page
+
+
+
+
+
 });
