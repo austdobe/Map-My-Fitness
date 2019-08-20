@@ -38,6 +38,8 @@ $(document).ready(function(){
       // Adds weight input form to modal
       weightForm();
 
+      profilePicGen();
+
       // Updates Navbar on Sign In
       $("#signInModalButton").text('Sign Out');
       
@@ -647,27 +649,37 @@ $(document).ready(function(){
           xhr.open('GET', profilePicURL);
           xhr.send();
           console.log(profilePicURL);
-    
-          var profilePicIMG = $("<img>");
-          profilePicIMG.attr("src", profilePicURL);
-          profilePicIMG.attr("width", "200");
-          $(".profilePic").prepend(profilePicIMG);
+          database.ref("/users/"+firebase.auth().currentUser.uid).update({
+            profilePicURL: profilePicURL
+          }).then(function(){
+            profilePicGen();
+          });
+          
       
-          // Or inserted into an <img> element:
-          var img = document.getElementById('myimg');
-          img.src = url;
         }).catch(function(error) {
           // Handle any errors
         });
 
-
       });
-    }
-
+    };
 
   }); // End of on-click function for change profile picture from profile page
 
-
+  var profilePicURL;
+  function profilePicGen() {
+    database.ref("/users/"+firebase.auth().currentUser.uid).once("value", function(snapshot) {
+      profilePicURL = snapshot.val().profilePicURL;
+      console.log(profilePicURL);
+    }).then(function(){
+      var profilePicIMG = $("<img>");
+      profilePicIMG.attr("src", profilePicURL);
+      profilePicIMG.attr("width", "200");
+      $(".profilePic").html(profilePicIMG);
+    });
+    
+    
+  };
+  
 
 
 
