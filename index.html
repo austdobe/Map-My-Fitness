@@ -101,11 +101,69 @@
                 </div>
             </div>
         </section>
+                <!-- Profile Section -->
+            </section>
+
+            <!-- This is where the Profile begins -->
+            <section class="sections" id="profile">
+                <div class="container">
+    
+                    <div class="row">
+                        <!-- User Profile photo -->
+                        <div class="col sm-12 col-lg-6 card infoBox">
+                            <h1 class="card-title" id="userName"></h1>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-6">
+                                    <div class="card">
+                                        <div class="row">
+                                            <div class="profilePic">
+                                                <img class="img-thumbnail" src="https://via.placeholder.com/200">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <button type="image" class="btn btn1 btn-primary" id="changePic" data-toggle="modal" data-target="#changeProfilePicModal"name="filepond">Change Profile Picture</button>
+                                            <button class="btn btn1 btn-primary mt-2" id="updateUserInfo" data-toggle="modal" data-target="#UpdateUserInfoModal">Update Info</button>
+                                            <button class="btn btn1 btn-primary mt-2" id="logNewWeight" data-toggle="modal" data-target="#logNewWeightModal">Log Weight</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col sm-12 col-lg-6">
+                                    <!-- user information -->
+                                    <div class="card">
+                                        <div class="row">
+                                            <h4 class="info col-12">Height: <span id="height"></span> </h4>
+                                            <h4 class="info col-12">Weight: <span id="weight"></span> </h4>
+                                            <h4 class="info col-12">Age: <span id="age"></span> </h4>
+                                            <h4 class="info col-12">Activity level: <span id="activity"></span> </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 text-center">    
+                            <div class="card progressCard">
+                                <h1 class="card-title">Progress</h1>
+                                <div id="chart"></div>
+                                <div id="tester" style="width:100%px; height:100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- list of favorites -->
+                        <div class="col-sm-6 card">
+                            <h1 class="card-title">My Workouts</h1>
+                            <span id="myWorkout"></span>
+                        </div>
+                        <div class="col-sm-6 card">
+                            <h1 class="card-title">My Recipes</h1>
+                            <span id="myRecipes"></span>
+                        </div>
+                    </div>
+                </div>
+                    
+            </section>
                 
-        <section id="workouts">
-            <div class="container">
-            </div>
-        </section>
+        
         <section id="recipes">
             <div class="container">
 
@@ -192,72 +250,67 @@
                 </div>
 
             </div>
-                
-                
-        <!-- Profile Section -->
         </section>
-
-        <!-- This is where the Profile begins -->
-        <section class="sections" id="profile">
-            <div class="container">
-
-                <div class="row">
-                    <!-- User Profile photo -->
-                    <div class="col sm-12 col-lg-6 card infoBox">
-                        <h1 class="card-title" id="userName"></h1>
-                        <div class="row">
-                            <div class="col-sm-12 col-lg-6">
-                                <div class="card">
-                                    <div class="row">
-                                        <div class="profilePic">
-                                            <img class="img-thumbnail" src="https://via.placeholder.com/200">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <button type="image" class="btn btn1 btn-primary" id="changePic" data-toggle="modal" data-target="#changeProfilePicModal"name="filepond">Change Profile Picture</button>
-                                        <button class="btn btn1 btn-primary mt-2" id="updateUserInfo" data-toggle="modal" data-target="#UpdateUserInfoModal">Update Info</button>
-                                        <button class="btn btn1 btn-primary mt-2" id="logNewWeight" data-toggle="modal" data-target="#logNewWeightModal">Log Weight</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col sm-12 col-lg-6">
-                                <!-- user information -->
-                                <div class="card">
-                                    <div class="row">
-                                        <h4 class="info col-12">Height: <span id="height"></span> </h4>
-                                        <h4 class="info col-12">Weight: <span id="weight"></span> </h4>
-                                        <h4 class="info col-12">Age: <span id="age"></span> </h4>
-                                        <h4 class="info col-12">Activity level: <span id="activity"></span> </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 text-center">    
-                        <div class="card progressCard">
-                            <h1 class="card-title">Progress</h1>
-                            <div id="chart"></div>
-                            <div id="tester" style="width:100%px; height:100%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- list of favorites -->
-                    <div class="col-sm-6 card">
-                        <h1 class="card-title">My Workouts</h1>
-                        <span id="myWorkout"></span>
-                    </div>
-                    <div class="col-sm-6 card">
-                        <h1 class="card-title">My Recipes</h1>
-                        <span id="myRecipes"></span>
-                    </div>
+    <section id="workouts">
+        <div class="container">
+            <header>
+                <h1 class="w100 text-center"><strong><a href="index.html">Fitness Workouts</a></strong></h1>
+            </header>
+            <div class="row">
+                <div class="btn-group text-center col-md-12 col-md-offset-3"  style="width: 100%;" role="group" aria-label="Button-group">
+                    <button type="button" id="abs" class="btn btn-secondary">Abs</button>
+                    <button type="button" id="arms" class="btn btn-secondary">Arms</button>
+                    <button type="button" id="back" class="btn btn-secondary">Back</button>
+                    <button type="button" id="calves" class="btn btn-secondary">Calves</button>
+                    <button type="button" id="chest" class="btn btn-secondary">Chest</button>
+                    <button type="button" id="legs" class="btn btn-secondary">Legs</button>
+                    <button type="button" id="shoulders" class="btn btn-secondary">Shoulders</button>
                 </div>
             </div>
+                    
+            <div class="row">
+                <div class="col-md-12 col-md-offset-3">
+                    <form action="#workouts">
+                        <p><input id="submit" type="submit" value="Find My Exercises!" class="form-control btn btn-primary w100">
+                        <input id="reset" type="reset" value="Reset" class="form-control btn btn-primary w100"></p>
+                    </form>
+                </div>
+            </div>
+                    
+            <table class="tborder" cellpadding="$stylevar[cellpadding]" cellspacing="$stylevar[cellspacing]" border="0" width="100%" align="center">
+                <td class="alt1" width="100%">
+                    <div class="smallfont" style="text-align: center;">
+                        <form id="vb_yt_search-form" action="http://www.youtube.com/results" method="get" target="_blank">
+                            <input id="vb_yt_search-term" class="form-control text-center" name="search_query" type="text" maxlength="128" placeholder="Search for a workout on Youtube.." />
+                                <select name="search_type">
+                                    <option value="" >Videos</option>
+                                    <option value="search_users">Channels</option>
+                                </select>
+                            <input type="submit" class="btn btn-secondary" value="Search" />
+                        </form>
+                    </div>
+                </td>
+            </table>
+                    
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="card-body" id="results" class="workoutDisplay"></div>
+                </div>
+            </div>
+                    
+            
+        </div>
+    </section>      
                 
-        </section>
+
     </div>
+    <!-- nutrition search -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/Javascript/food.js"></script>
+    <!-- workout search -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script src="https://apis.google.com/js/client.js"></script>
+                <script src="javascript1.js"></script>
     
 </body>
 </html>
