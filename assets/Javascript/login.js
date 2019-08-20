@@ -197,6 +197,7 @@ $(document).ready(function(){
           updateSuccessDiv.attr("role","alert");
           updateSuccessDiv.text("Success!");
           $("#signUpAlert").html(updateSuccessDiv);
+          $(".updateInfoForm").removeAttr("style","background-color");
         });
       };
     }, 3000);
@@ -506,7 +507,7 @@ $(document).ready(function(){
                               <label for="goals">Goals</label>
                               <select id="goalsInput" class="form-control">
                                   <option value="car1"></option>
-                                  <option value="Loose More Weight">Loose More Weight</option>
+                                  <option value="Lose More Weight">Lose More Weight</option>
                                   <option value="Build Muscle">Build Muscle</option>
                                   <option value="Look like 'the Rock'">Look like "the Rock"</option>
                               </select>
