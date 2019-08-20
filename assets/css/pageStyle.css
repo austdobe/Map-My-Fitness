@@ -190,7 +190,12 @@ hr{
 .extra-margin{
     margin: 0px 0px 20px 0px;
 }
-
+td{
+    color: whitesmoke;
+}
+.header-title{
+    color: whitesmoke;
+}
 .workoutdisplay{
     color: whitesmoke;
 }
