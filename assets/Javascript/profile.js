@@ -1,10 +1,11 @@
 $(document).ready(function(){
     // Links to firebase database
     var database = firebase.database();
-    
+    var userLoggedIn;
     // Updates profile info when first loading page
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
+            userLoggedIn = user
             // Creates user info update modal once logged in and removed new user sign up form due to id conflicts
             createUpdateInfoModal();
             $("#newUserDiv").empty();
@@ -83,7 +84,11 @@ $(document).ready(function(){
 
     // Checks if recipes are already favorited when searching
     $("#submit-recipe").on("click", function(event) {
-        favoritesUpdate();
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                favoritesUpdate();
+            };
+        });
     });
 
     // When favorite/unfavorite button is clicked on recipe search page
