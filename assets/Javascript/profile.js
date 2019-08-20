@@ -1,10 +1,11 @@
 $(document).ready(function(){
     // Links to firebase database
     var database = firebase.database();
-    
+    var userLoggedIn;
     // Updates profile info when first loading page
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
+            userLoggedIn = user
             // Creates user info update modal once logged in and removed new user sign up form due to id conflicts
             createUpdateInfoModal();
             $("#newUserDiv").empty();
@@ -28,7 +29,7 @@ $(document).ready(function(){
         database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/recipes").once("value", function(parent) {
             parent.forEach(function(snapshot) {
                 var divWrapper = $("<div>");
-                divWrapper.addClass("card recipe-card card-body text-center")
+                divWrapper.addClass("card col-4 recipe-card card-body text-center")
     
                 var imageURL = snapshot.val().recipeImageUrl;
     
@@ -83,7 +84,11 @@ $(document).ready(function(){
 
     // Checks if recipes are already favorited when searching
     $("#submit-recipe").on("click", function(event) {
-        favoritesUpdate();
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                favoritesUpdate();
+            };
+        });
     });
 
     // When favorite/unfavorite button is clicked on recipe search page
@@ -138,6 +143,7 @@ $(document).ready(function(){
     // Grabs user info from firebase when user info modal is opened
     $(document).on("click", "#updateUserInfo", function(event) {
         event.preventDefault();
+        $(".updateInfoForm").removeAttr("style","background-color");
         database.ref("/users/"+firebase.auth().currentUser.uid).once("value", function(snapshot) {
             $("#validationCustom01").val(snapshot.val().firstName);
             $("#validationCustom02").val(snapshot.val().lastName);
@@ -149,6 +155,14 @@ $(document).ready(function(){
             $("#activityLevelInput").val(snapshot.val().activityLevel);
             $("#customSwitch1").attr("checked",snapshot.val().nutritionToPlan);
 
+            $(document).on("change", ".updateInfoForm", function(event) {
+                event.preventDefault();
+                $(this).css("background-color","#e8f0fe");
+            });
+            $(document).on("keydown", ".updateInfoForm", function(event) {
+                $(this).css("background-color","#e8f0fe");
+            });
+
             // Updates diet button display
             if (snapshot.val().dietLevel === "Good"){
                 $("#dietButton1").attr("class","btn btn-primary dietButtons");
@@ -159,6 +173,8 @@ $(document).ready(function(){
             };
         });
     });
+
+    
 
     // Function to create user info modal once signed in
     function createUpdateInfoModal() {
@@ -180,7 +196,7 @@ $(document).ready(function(){
                                             <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom01">First name</label>
-                                                    <input type="text" class="form-control" id="validationCustom01" placeholder="Mark" required>
+                                                    <input type="text" class="form-control updateInfoForm" id="validationCustom01" placeholder="Mark" required>
                                                     <div class="valid-feedback">
                                                         Looks good!
                                                     </div>
@@ -190,7 +206,7 @@ $(document).ready(function(){
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom02">Last name</label>
-                                                    <input type="text" class="form-control" id="validationCustom02" placeholder="Otto" required>
+                                                    <input type="text" class="form-control updateInfoForm" id="validationCustom02" placeholder="Otto" required>
                                                     <div class="valid-feedback">
                                                     Looks good!
                                                     </div>
@@ -200,7 +216,7 @@ $(document).ready(function(){
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="Gender">Gender</label>
-                                                    <select label for="gender" id="gender" class="form-control">
+                                                    <select label for="gender" id="gender" class="form-control updateInfoForm">
                                                     <option></option>
                                                     <option>Male</option>
                                                     <option>Female</option>
@@ -215,9 +231,9 @@ $(document).ready(function(){
                                             <div class="form-group form-check"></div>
                                             <div class="form-group">
                                                 <label for="goals">Goals</label>
-                                                <select id="goalsInput" class="form-control">
+                                                <select id="goalsInput" class="form-control updateInfoForm">
                                                     <option value="car1"></option>
-                                                    <option value="Loose More Weight">Loose More Weight</option>
+                                                    <option value="Lose More Weight">Lose More Weight</option>
                                                     <option value="Build Muscle">Build Muscle</option>
                                                     <option value="Look like 'the Rock'">Look like "the Rock"</option>
                                                 </select>
@@ -227,7 +243,7 @@ $(document).ready(function(){
                                             </div>
                                             <div class="form-group">
                                                 <label>Activity Level</label>  
-                                                <select id="activityLevelInput" class="form-control">
+                                                <select id="activityLevelInput" class="form-control updateInfoForm">
                                                 <option value="car1"></option>
                                                     <option value="0 to 1 hours/wk<">0 to 1 hours/wk</option>
                                                     <option value="1 to 3 hours/wk">1 to 3 hours/wk</option>
@@ -241,21 +257,21 @@ $(document).ready(function(){
                                         </form>
                                         <div class="form-group">
                                                 <label for="exampleWeightInput">Current Weight (lbs)</label>
-                                                <input class="form-control" id="weightInput" placeholder="...">
+                                                <input class="form-control updateInfoForm" id="weightInput" placeholder="...">
                                                 <div id="weightValidation" class="invalid-feedback">
                                                     Please enter a valid weight
                                                 </div>  
                                         </div>
                                         <div class="form-group">
                                                 <label for="exampleHeightInput">Current Height (5'10")</label>
-                                                <input class="form-control" id="heightInput" placeholder="...">
+                                                <input class="form-control updateInfoForm" id="heightInput" placeholder="...">
                                                 <div id="heightValidation" class="invalid-feedback">
                                                     Please enter a valid height
                                                 </div>  
                                         </div>
                                         <div class="form-group">
                                                 <label for="exampleAgeInput">Age</label>
-                                                <input class="form-control" id="ageInput" placeholder="...">
+                                                <input class="form-control updateInfoForm" id="ageInput" placeholder="...">
                                                 <div id="ageValidation" class="invalid-feedback">
                                                     Please enter a valid age
                                                 </div>  
