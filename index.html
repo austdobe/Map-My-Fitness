@@ -61,20 +61,23 @@
     <div class="scroll-container">
         <section id="about">
             <div class="row">
-                <div class="col-8">
+                <div class="col-med-12 col-lg-8">
+
+                    <!-- image carousel in the about section -->
+
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="https://s3.amazonaws.com/zenplannerwordpress-stack0/wp-content/uploads/sites/119/2018/07/25103801/Gym-Background-Final.jpg" height="500px" width="100%" alt="First slide">
+                                <img class="d-block w-100" src="https://s3.amazonaws.com/zenplannerwordpress-stack0/wp-content/uploads/sites/119/2018/07/25103801/Gym-Background-Final.jpg" height="425px" width="90%" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="assets/Images/karate.jpg" height="500px" width="100%" alt="Second slide">
+                                <img class="d-block w-100" src="assets/Images/karate.jpg" height="425px" width="90%" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="assets/Images/Free-Toronto-Gym-05.jpg" height="500px" width="100%" alt="Third slide">
+                                <img class="d-block w-100" src="assets/Images/Free-Toronto-Gym-05.jpg" height="425px" width="90%" alt="Third slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="assets/Images/Results-or-Excuses.jpg" height="500px" width="100%" alt="Third slide">
+                                <img class="d-block w-100" src="assets/Images/Results-or-Excuses.jpg" height="425px" width="90%" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -87,7 +90,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-med-12 col-lg-4">
                     <div class="us">
                         <p>Do you find it difficult to start a workout plan? Do you have an understanding of how to workout, but you just arent sure how to push your muscles in everyway? Are you a health enthusiast and are looking for good wholesome recipes from a reliable source?</p>
                         <p>We at map my fitness completely understand the struggle you are going through. We find that nutrition and excercise go hand in hand. You need both to give your muscles everything they need to flurish</p>
@@ -110,8 +113,7 @@
 
                         <div class="col-md-6">
 
-                            <!-- <div class="card-columns"> -->
-
+                                <!-- Recipe search -->
                                 <div class="card search-card">
                                     <div class="card-body text-center">
                                         <form>
@@ -123,7 +125,7 @@
                                         </form>
                                     </div>
                                 </div>
-
+                                <!-- nutriton calculations -->
                                 <div class="card search-card">
                                     <div class="card-body text-center">
                                         <form>
@@ -141,7 +143,7 @@
                         </div>
 
                         <div class="col-md-6">
-
+                            <!-- Calculate your own recipe -->
                             <div class="card search-card">
                                 <div class="card-body text-center">
                                     <form>
@@ -157,7 +159,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="my-recipe-ingredients"><h3>Ingredients (one per line)</h3></label>
-                                            <textarea class="form-control" id="my-recipe-ingredients" rows="10" placeholder="eg '4 oz chicken' or '1 large apple'"></textarea>
+                                            <textarea class="form-control" id="my-recipe-ingredients" rows="5" placeholder="eg '4 oz chicken' or '1 large apple'"></textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary" id="submit-my-recipe" href=".display-recipes">Submit</button>
                                     </form>
@@ -170,8 +172,10 @@
 
                 </div>
                 <div class="row">
-                    <div class="display-recipes">
-                    <!-- When searching for recipes, the results will display here. -->
+                    <div>
+                        <span class="display-recipes">
+                        <!-- When searching for recipes, the results will display here. -->
+                        </span>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
@@ -188,13 +192,17 @@
                 
                 
         </section>
-        <section id="profile">
+
+        <!-- This is where the Profile begins -->
+        <section class="sections" id="profile">
             <div class="container">
+
                 <div class="row">
-                    <div class="col-sm-6 card infoBox">
+                    <!-- User Profile photo -->
+                    <div class="col sm-12 col-lg-6 card infoBox">
                         <h1 class="card-title" id="userName"></h1>
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12 col-lg-6">
                                 <div class="card">
                                     <div class="row">
                                         <img class="profilePic img-thumbnail" src="https://via.placeholder.com/200">
@@ -204,7 +212,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col sm-12 col-lg-6">
+                                <!-- user information -->
                                 <div class="card">
                                     <div class="row">
                                         <h4 class="info col-12">Height: <span id="height"></span> </h4>
@@ -219,7 +228,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 text-center">    
+                    <div class="col-sm-6 text-center"> 
+                        <!-- chart for weight progress    -->
                         <div class="card">
                             <h1 class="card-title">Progress</h1>
                             
@@ -227,6 +237,7 @@
                     </div>
                 </div>
                 <div class="row">
+                    <!-- list of favorites -->
                     <div class="col-sm-6 card">
                         <h1 class="card-title">My Workouts</h1>
                         <span id="myWorkout"></span>
