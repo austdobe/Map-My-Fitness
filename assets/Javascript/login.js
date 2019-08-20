@@ -660,12 +660,8 @@ $(document).ready(function(){
           // Handle any errors
         });
 
-
       });
     };
-    
-    
-
 
   }); // End of on-click function for change profile picture from profile page
 
