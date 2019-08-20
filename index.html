@@ -14,6 +14,7 @@
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-storage.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="assets/Javascript/login.js"></script>
     <script src="assets/Javascript/profile.js"></script>
@@ -191,6 +192,7 @@
             </div>
                 
                 
+        <!-- Profile Section -->
         </section>
         <section id="profile">
             <div class="container">
@@ -201,10 +203,12 @@
                             <div class="col-sm-6">
                                 <div class="card">
                                     <div class="row">
-                                        <img class="profilePic img-thumbnail" src="https://via.placeholder.com/200">
+                                        <div class="profilePic">
+                                            <img class="img-thumbnail" src="https://via.placeholder.com/200">
+                                        </div>
                                     </div>
                                     <div class="row">
-                                        <button type="image" class="btn btn1 btn-primary" id="changePic" name="filepond">Change Profile Picture</button>
+                                        <button type="image" class="btn btn1 btn-primary" id="changePic" data-toggle="modal" data-target="#changeProfilePicModal"name="filepond">Change Profile Picture</button>
                                         <button class="btn btn1 btn-primary mt-2" id="updateUserInfo" data-toggle="modal" data-target="#UpdateUserInfoModal">Update Info</button>
                                         <button class="btn btn1 btn-primary mt-2" id="logNewWeight" data-toggle="modal" data-target="#logNewWeightModal">Log Weight</button>
                                     </div>

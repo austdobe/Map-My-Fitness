@@ -187,4 +187,6 @@ hr{
     background-color: rgba(169, 169, 169, 0.383);
     padding: 10px 20px;
 }
-
+.extra-margin{
+    margin: 0px 0px 20px 0px;
+}
