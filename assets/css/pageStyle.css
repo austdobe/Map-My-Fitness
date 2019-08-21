@@ -9,13 +9,7 @@ html{
     background-color: black;
     scroll-behavior: smooth;
 }
-.titleContainer{
-    background: black url("") no-repeat;
-    background-size:75%;
-    background-position-x: 50%;
-    background-position-y: 150px;
-    z-index: 1;
-}
+
 .container{
     margin-top: 0px;
     padding-top: 0px;
@@ -34,15 +28,10 @@ h1{
     font-family: 'Frank Ruhl Libre', serif;
     font-size: 42px;
     text-align: center; 
-    margin-top: 40px;
+    /* margin-top: 40px; */
     color: white;
 }
 
-
-
-.float-right{
-    margin-right: 20px;
-}
 
 h3{
     font-size: 20px;
@@ -71,7 +60,7 @@ h4{
     margin:10px auto;
 }
 .navbar{
-    height: 110px;
+    height: 100px;
     width: 100%;
     background-color: rgb(53, 53, 53);
     position: fixed;
@@ -79,9 +68,10 @@ h4{
     right: 0;
     z-index: 999;
     overflow: auto;
+    
 }
 .info{
-    margin: 20px 0; 
+    margin: 0; 
     text-align: left;
 }
 
@@ -90,10 +80,11 @@ h4{
 }
 
 .logo{
-    height: 75px;
-    width: 100px;
+    height: 75%;
+    width: 100%;
 
 }
+
 .nav-link{
     text-align: center;
     margin: auto 30px;
@@ -104,7 +95,7 @@ a{
     color:whitesmoke;
 }
 .infoBox{
-    margin: 10px 0;
+    margin: 0;
     overflow: auto;
 }
 .recipe-card{
@@ -158,14 +149,14 @@ hr{
     height: 425px;
 }
 .us{
-    margin: 20px 20px;
+    margin: 0 20px;
     color: whitesmoke;
     background-color: rgba(169, 169, 169, 0.383);
-    padding: 10px 20px;
+    padding: 0 20px;
     ;
 }
 .slide{
-    margin-top: 20px;
+    margin-top: 0;
 }
 .extra-margin{
     margin: 0px 0px 20px 0px;

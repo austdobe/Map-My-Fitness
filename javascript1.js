@@ -88,7 +88,7 @@
     
                       if (results[i].category == 10) {
                       
-                      var workoutDiv = $("<div>");
+                      var workoutDiv = $("<div>").addClass("card");
                       var p = $("<p>").text("Name: " + results[i].name);
                       var ptwo = $("<p>").text("Equipment: " + tempEquipment);
                       //var pthree = $("<p>").text("Description: " + results[i].description);
@@ -195,10 +195,10 @@
       
                     if (results[i].category == 8) {
                       
-                    var workoutDiv = $("<div>");
-                    var p = $("<p>").text("Name: " + results[i].name);
+                    var workoutDiv = $("<div>").addClass("card");
+                    var p = $("<p>").text("Name: " + results[i].name)("card-header");
                     var ptwo = $("<p>").text("Equipment: " + tempEquipment);
-                    var pthree = $("<p>").text("Description: " + results[i].description);
+                    // var pthree = $("<p>").text("Description: " + results[i].description);
                     var demoJSON = {
                       field: ("Description: " + results[i].description)
                     }
