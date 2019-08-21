@@ -29,7 +29,7 @@ $(document).ready(function(){
         database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/recipes").once("value", function(parent) {
             parent.forEach(function(snapshot) {
                 var divWrapper = $("<div>");
-                divWrapper.addClass("card col-4 recipe-card card-body text-center")
+                divWrapper.addClass("card col-lg-4 recipe-card card-body text-center")
     
                 var imageURL = snapshot.val().recipeImageUrl;
     
@@ -54,6 +54,36 @@ $(document).ready(function(){
                 unFavorite.text("Remove from Favorites")
                 unFavorite.attr("data-key",snapshot.key);
                 unFavorite.attr("class","unFavoriteButton");
+    
+                // Display recipes on page
+                divWrapper.append(myImage, recipeName, recipeCalories, recipeServings, unFavorite);
+                $("#myRecipes").append(divWrapper);
+                
+                let favoriteButton = $(document).find("[data-recipe-url = '" + snapshot.val().recipeUrl.toString()+"']");
+                if(favoriteButton) {
+                    $(favoriteButton).attr("data-state","favorited");
+                    $(favoriteButton).text("Remove");
+                    $(favoriteButton).attr("class","my-favorites btn btn-light");
+                };
+            });
+        });
+    };
+
+    // Updates recipe favorites list div when favorites when called
+    function favoriteWorkoutsUpdate() {
+        $("#myWorkout").empty();
+
+        // Loops through each child in favorites/recipes section
+        database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/workouts").once("value", function(parent) {
+            parent.forEach(function(snapshot) {
+                var divWrapper = $("<div>");
+               
+    
+                // Functionality to save recipe to favorites
+                var unFavorite = $("<button>");
+                unFavorite.text("Remove from Favorites")
+                unFavorite.attr("data-key",snapshot.key);
+                unFavorite.attr("class","unFavoriteWorkoutButton");
     
                 // Display recipes on page
                 divWrapper.append(myImage, recipeName, recipeCalories, recipeServings, unFavorite);
@@ -130,6 +160,50 @@ $(document).ready(function(){
 
                 // Updates profile favorites section
                 favoritesUpdate();
+            });
+            
+            // Updates button attributes
+            $(this).attr("data-state","favorited");
+            $(this).text("Remove");
+            $(this).attr("class","my-favorites btn btn-light");
+
+        };  
+    });
+
+    // When favorite/unfavorite button is clicked on recipe search page
+    $(document).on("click", ".my-favorite-exercise", function(event) {
+        // grabs info from button when clicked
+        var excerciseName = $(this).attr("data-exercise-name");
+        var excerciseEquipment = $(this).attr("data-equipment");
+        var excerciseDescription = $(this).attr("data-exercise-description");
+        var favoriteButton = $(this);
+
+        // Checks if recipe is already favorited
+        if (favoriteState === "favorited") {
+            $(this).text("Add to favorites");
+            $(this).attr("class","my-favorite-exercise btn btn-primary");
+            $(this).attr("data-state","notFavorited");
+
+            // Removes recipe from firebase based on key
+            database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/workouts").child($(this).attr("data-key")).remove();
+
+            // Updates profile favorites section
+            favoriteWorkoutsUpdate();
+            
+        // Recipe has not yet been favorited
+        } else {
+            // Add recipe to firebase
+            database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/workouts").push({
+                excerciseName: excerciseName,
+                excerciseEquipment: excerciseEquipment,
+                excerciseDescription: excerciseDescription
+            }).then((snap) => {
+                // Grabs child key from firebase and adds to button clicked
+                key = snap.key;
+                $(favoriteButton).attr("data-key",key);
+
+                // Updates profile favorites section
+                favoriteWorkoutsUpdate();
             });
             
             // Updates button attributes
@@ -301,3 +375,4 @@ $(document).ready(function(){
         );
     };
 });
+

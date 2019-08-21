@@ -605,7 +605,7 @@ $(document).ready(function(){
                       <form action="" style="width: 300px; margin: auto">
                         <div id="filesubmit">
                           <input type="file" class="mb-3" id="file-select" accept="image/*"/>
-                          <button class="btn btn1 btn-primary" id="file-submit">SUBMIT</button>
+                          <button class="btn btn-primary" id="file-submit">SUBMIT</button>
                         </div>
                       </form>
                   </div>
