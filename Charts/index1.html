@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chart Input with local storage</title>
+</head>
+<body>
+
+    <form>
+        <div class="FormBox">
+            <label for="title">Mapmyweight</label>
+            <input type="text" id="MyWeightToday" placeholder="Title"/>
+        </div>
+        
+
+        </div>
+
+
+    </form>
+    <script>
+       var charts = [];
+       
+       const addWeight = (ev)=>{
+           ev.preventDefault(); 
+           let Weight = {
+               id: Weight.now(),
+               title: document.getElementById('title').value,
+               }
+            charts.push(charts);
+            document.forms[0].reset();
+
+            console.warn('added' , {charts} );
+            
+       }
+    </script>
+    <script type="text/javascript">
+        var myObj = {
+            weight: "myWeight",
+        };
+
+        var myObj_serialized = JSON.stringify(myObj);
+
+        localStorage.setItem("myObj", myObj_serialized);
+
+        let myObj_serialized = JSON.parse(localStorage.getItem("myObj"));
+
+        console.log(myObj_serialized);
+    </script>
+
+    
+    </script>
+</body>
+</html>
