@@ -29,7 +29,7 @@ $(document).ready(function(){
         database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/recipes").once("value", function(parent) {
             parent.forEach(function(snapshot) {
                 var divWrapper = $("<div>");
-                divWrapper.addClass("card col-4 recipe-card card-body text-center")
+                divWrapper.addClass("card col-lg-4 recipe-card card-body text-center")
     
                 var imageURL = snapshot.val().recipeImageUrl;
     
@@ -301,3 +301,4 @@ $(document).ready(function(){
         );
     };
 });
+
