@@ -109,9 +109,7 @@ h4{
     margin: 20px 0; 
     text-align: left;
 }
-work{
-    margin: 0 auto;
-}
+
 .logo{
     height: 75px;
     width: 100px;
@@ -208,9 +206,9 @@ td{
     background-color: rgba(169, 169, 169, 0.383);
     padding: 10px 20px;
 }
-.btnNav{
+/* .btnNav{
     background-color: rgba(0,0,0,0.8);
     position: sticky;
     top: 50px;
     z-index: 999
-}
+} */
