@@ -20,6 +20,10 @@ $(document).ready(function() {
         var results = response.totalNutrients;
         console.log(results);
 
+        // Empties out any nutrition facts already displayed
+        $(".display-nutrition").empty();
+
+
         // Changes the header from Recipe to Nutrition Facts
         $(".header-title").html("<h1>Nutrition Facts</h1>");
         $(".header-title").prepend("<h1>" + searchName + "</h1>");
@@ -28,16 +32,53 @@ $(document).ready(function() {
         // Puts all of the main nutrition data into appropriate variables
         var rServings = "<tr><td>Number of servings: " + numServings + "</td></tr>"; // results.
         var rCalories = "<tr><td>Calories per serving: " + Math.floor(results.ENERC_KCAL.quantity / numServings) + "</td></tr>";
-        var rTotalFat = "<tr><td>Total Fat: " + Math.floor(results.FAT.quantity / numServings) + " " + results.FAT.unit + "</td></tr>";
-        var rSaturatedFat = "<tr><td>Saturated Fat: " + Math.floor(results.FASAT.quantity / numServings) + " " + results.FASAT.unit + "</td></tr>";
-        var rSodium = "<tr><td>Sodium: " + Math.floor(results.NA.quantity / numServings) + " " + results.NA.unit + "</td></tr>";
-        var rCarbs = "<tr><td>Total Carbohydrates: " + Math.floor(results.CHOCDF.quantity / numServings) + " " + results.CHOCDF.unit + "</td></tr>";
-        var rFiber = "<tr><td>Dietary Fiber: " + Math.floor(results.FIBTG.quantity / numServings) + " " + results.FIBTG.unit + "</td></tr>";
-        var rSugar = "<tr><td>Total Sugars: " + Math.floor(results.SUGAR.quantity / numServings) + " " + results.SUGAR.unit + "</td></tr>";
-        var rProtein = "<tr><td>Protein: " + Math.floor(results.PROCNT.quantity / numServings) + " " + results.PROCNT.unit + "</td></tr>";
-
-        if (!results.FATRN) { var rTransFat = ""; } else { var rTransFat = "<tr><td>Trans Fat: " + Math.floor(results.FATRN.quantity / numServings) + " " + results.FATRN.unit + "</td></tr>"; }
-        if (!results.CHOLE) { var rCholesterol = ""; } else { var rCholesterol = "<tr><td>Total Cholesterol: " + Math.floor(results.CHOLE.quantity / numServings) + " " + results.CHOLE.unit + "</td></tr>"; }
+        
+        // Checking to make sure that each nutrition data item exists and then saves it into variables
+        if (!results.FAT) {
+                var rTotalFat = "";
+            } else {
+                var rTotalFat = "<tr><td>Total Fat: " + Math.floor(results.FAT.quantity / numServings) + " " + results.FAT.unit + "</td></tr>";
+        }
+        if (!results.FASAT) {
+                var rSaturatedFat = "";
+            } else {
+                var rSaturatedFat = "<tr><td>Saturated Fat: " + Math.floor(results.FASAT.quantity / numServings) + " " + results.FASAT.unit + "</td></tr>";
+        }
+        if (!results.NA) {
+                var rSodium = "";
+            } else {
+                var rSodium = "<tr><td>Sodium: " + Math.floor(results.NA.quantity / numServings) + " " + results.NA.unit + "</td></tr>";
+        }
+        if (!results.CHOCDF) {
+                var rCarbs = "";
+            } else {
+                var rCarbs = "<tr><td>Total Carbohydrates: " + Math.floor(results.CHOCDF.quantity / numServings) + " " + results.CHOCDF.unit + "</td></tr>";
+        }
+        if (!results.FIBTG) {
+                var rFiber = "";
+            } else {
+                var rFiber = "<tr><td>Dietary Fiber: " + Math.floor(results.FIBTG.quantity / numServings) + " " + results.FIBTG.unit + "</td></tr>";
+        }
+        if (!results.SUGAR) {
+                var rSugar = "";
+            } else {
+                var rSugar = "<tr><td>Total Sugars: " + Math.floor(results.SUGAR.quantity / numServings) + " " + results.SUGAR.unit + "</td></tr>";
+        }
+        if (!results.PROCNT) {
+                var rCarbs = "";
+            } else {
+                var rProtein = "<tr><td>Protein: " + Math.floor(results.PROCNT.quantity / numServings) + " " + results.PROCNT.unit + "</td></tr>";
+        }
+        if (!results.FATRN) {
+                var rTransFat = ""; 
+            } else { 
+                var rTransFat = "<tr><td>Trans Fat: " + Math.floor(results.FATRN.quantity / numServings) + " " + results.FATRN.unit + "</td></tr>"; 
+        }
+        if (!results.CHOLE) { 
+                var rCholesterol = ""; 
+            } else { 
+                var rCholesterol = "<tr><td>Total Cholesterol: " + Math.floor(results.CHOLE.quantity / numServings) + " " + results.CHOLE.unit + "</td></tr>"; 
+        }
 
         // Displays the information in a new table
         $(".display-nutrition").append(rServings + rCalories + rTotalFat + rSaturatedFat + rTransFat + rCholesterol + rSodium + rCarbs + rFiber + rSugar + rProtein);
@@ -50,6 +91,7 @@ $(document).ready(function() {
         event.preventDefault();
 
         // Empties any recipes that are displayed and hides the search boxes
+        $(".display-nutrition").empty();
         $(".display-recipes").empty();
         $(".search-card").hide()
         $(".newSearch").show()
