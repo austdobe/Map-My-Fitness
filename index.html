@@ -22,45 +22,39 @@
     <script src="assets/Javascript/Chart.js"></script>
 
 </head>
+
 <body class="bigContainer">
-    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark ">
-        <div class="row">
-            <div class = "col-4">
+    <header>
                 <a href="index.html"><img class="logo" src="assets/Images/logo.png"></a>
-            </div>
-            <div class="col-8">
                 <h1 class="text-center">Map Your Fitness</h1>
+    </header>
+    <nav>
+        <!-- <div class="navbar navbar-expand-lg navbar-expand-sm"> -->
+            <!-- <button class="navbar-toggler btn-primary" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" \aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav"> -->
+            <div class="navbar">
+            
+                <ul class="text-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link recipe" href="#recipes">Nutrition</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#workouts">Exercise</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="signInModalButton" data-toggle="modal" data-target="#exampleModal" href="#">Sign In</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="nav col-12 text-center">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" \aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#about">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#workouts">Exercise</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active recipe" href="#recipes">Nutrition</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#profile">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" id="signInModalButton" data-toggle="modal" data-target="#exampleModal" href="#">Sign In</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
     </nav>
     <div class="scroll-container">
         <section id="about">
@@ -235,49 +229,48 @@
                     </div>
 
                 </div>
-                <div class="row">
-                    <button type="button" class="btn btn-primary newSearch">New Search</button>
-                    <div>
-                        <span class="display-recipes">
-                        <!-- When searching for recipes, the results will display here. -->
-                        </span>
-                    </div>
-                </div>
-                <div class="row justify-content-md-center">
-                    <div class="col-md-4 text-center">
-                        <div class="header-title">
-                            
-                        </div>
-                        <table class="table text-center">
-                            <tbody class="display-nutrition">
-                                <!-- When searching for nutrition facts, the results will display here. -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
+        <div class="row">
+            <button type="button" class="btn btn-primary newSearch">New Search</button>
+            <div>
+                <span class="display-recipes">
+                <!-- When searching for recipes, the results will display here. -->
+                </span>
             </div>
-        </section>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 text-center">
+                <div class="header-title">
+                    
+                </div>
+                <table class="table text-center">
+                    <tbody class="display-nutrition">
+                        <!-- When searching for nutrition facts, the results will display here. -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</section>
     <section id="workouts">
         <div class="container">
             <header>
-                <h1 class="w100 text-center"><strong><a href="index.html">Fitness Workouts</a></strong></h1>
+                <h1 class="w100 text-center work"><strong>Fitness Workouts</strong></h1>
             </header>
-            <div class="row">
-                <div class="btn-group text-center col-md-12 col-md-offset-3"  style="width: 100%;" role="group" aria-label="Button-group">
-                    <button type="button" id="abs" class="btn btn-secondary">Abs</button>
-                    <button type="button" id="arms" class="btn btn-secondary">Arms</button>
-                    <button type="button" id="back" class="btn btn-secondary">Back</button>
-                    <button type="button" id="calves" class="btn btn-secondary">Calves</button>
-                    <button type="button" id="chest" class="btn btn-secondary">Chest</button>
-                    <button type="button" id="legs" class="btn btn-secondary">Legs</button>
-                    <button type="button" id="shoulders" class="btn btn-secondary">Shoulders</button>
+            <div class="row btnNav" href="#workouts">
+                <div class="btn-group text-center col-md-12 col-md-offset-3 "  style="width: 100%;" role="group" aria-label="Button-group">
+                    <button type="button" id="abs" class="btn btn-secondary" href="#workouts">Abs</button>
+                    <button type="button" id="arms" class="btn btn-secondary" href="#workouts">Arms</button>
+                    <button type="button" id="back" class="btn btn-secondary" href="#workouts">Back</button>
+                    <button type="button" id="calves" class="btn btn-secondary" href="#workouts">Calves</button>
+                    <button type="button" id="chest" class="btn btn-secondary" href="#workouts">Chest</button>
+                    <button type="button" id="legs" class="btn btn-secondary" href="#workouts">Legs</button>
+                    <button type="button" id="shoulders" class="btn btn-secondary" href="#workouts">Shoulders</button>
                 </div>
             </div>
-                    
             <div class="row">
                 <div class="col-md-12 col-md-offset-3">
-                    <form action="#workouts">
+                    <form>
                         <p><input id="submit" type="submit" value="Find My Exercises!" class="form-control btn btn-primary w100">
                         <input id="reset" type="reset" value="Reset" class="form-control btn btn-primary w100"></p>
                     </form>
@@ -300,9 +293,9 @@
             </table>
                     
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
+                <!-- <div class="col-md-6 col-md-offset-3"> -->
                     <div class="card-body" id="results" class="workoutDisplay"></div>
-                </div>
+                <!-- </div> -->
             </div>
                     
             
