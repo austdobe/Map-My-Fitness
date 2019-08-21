@@ -48,6 +48,8 @@
         //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
         //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
         $("#submit").on("click", function(){
+          var head = $("<div>").text("Ab Workouts").addClass("workoutTitle")
+          
     
         $.ajax({
             url: basicQueryURL + "/" + endpointExercise,
@@ -88,19 +90,30 @@
     
                       if (results[i].category == 10) {
                       
-                      var workoutDiv = $("<div>").addClass("card");
+                      var workoutDiv = $("<div>").addClass("card workoutCard");
                       var p = $("<p>").text("Name: " + results[i].name);
                       var ptwo = $("<p>").text("Equipment: " + tempEquipment);
                       //var pthree = $("<p>").text("Description: " + results[i].description);
                       var demoJSON = {
                         field: ("Description: " + results[i].description)
                       }
+                      
+                      var favoriteExercise = $("<button>").addClass("float-right");
+                      favoriteExercise.text("Add to favorites");
+                      favoriteExercise.addClass("my-favorite-exercise btn btn-primary");
+                      favoriteExercise.attr("data-exercise-name", results[i].name);
+                      favoriteExercise.attr("data-equipment", tempEquipment);
+                      favoriteExercise.attr("data-exercise-description", demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
+                      
+                      workoutDiv.append(favoriteExercise)
                       workoutDiv.append(p);
                       workoutDiv.append(ptwo);
                       workoutDiv.append(demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
+                      head.append(workoutDiv)
                       $("#results").prepend(workoutDiv);
                       }
                     }
+                    $("#results").prepend(head)
                 });
             }
         });
@@ -155,7 +168,7 @@
       //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
       //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
       $("#submit").on("click", function(){
-      
+      var head = $("<div>").text("Arm Workouts").addClass("workoutTitle")
       $.ajax({
           url: basicQueryURL + "/" + endpointExercise,
           method: "GET"
@@ -195,19 +208,28 @@
       
                     if (results[i].category == 8) {
                       
-                    var workoutDiv = $("<div>").addClass("card");
-                    var p = $("<p>").text("Name: " + results[i].name)("card-header");
+                    var workoutDiv = $("<div>").addClass("card workoutCard");
+                    var p = $("<p>").text("Name: " + results[i].name);
                     var ptwo = $("<p>").text("Equipment: " + tempEquipment);
                     // var pthree = $("<p>").text("Description: " + results[i].description);
                     var demoJSON = {
                       field: ("Description: " + results[i].description)
                     }
+                    
+                    var favoriteExercise = $("<button>").addClass("float-right");
+                    favoriteExercise.text("Add to favorites");
+                    favoriteExercise.addClass("my-favorite-exercise btn btn-primary");
+                    favoriteExercise.attr("data-exercise-name", results[i].name);
+                    favoriteExercise.attr("data-equipment", tempEquipment);
+                    favoriteExercise.attr("data-exercise-description", demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
+                    workoutDiv.append(favoriteExercise)
                     workoutDiv.append(p);
                     workoutDiv.append(ptwo);
                     workoutDiv.append(demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
                     $("#results").prepend(workoutDiv);
                     }
                   }
+                  $("#results").prepend(head)
               });
           }
       });
@@ -263,7 +285,7 @@
         //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
         //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
         $("#submit").on("click", function(){
-        
+          var head = $("<div>").text("Back Workouts").addClass("workoutTitle")
         $.ajax({
             url: basicQueryURL + "/" + endpointExercise,
             method: "GET"
@@ -303,19 +325,28 @@
         
                       if (results[i].category == 12) {
                         
-                      var workoutDiv = $("<div>");
+                      var workoutDiv = $("<div>").addClass("card workoutCard");
                       var p = $("<p>").text("Name: " + results[i].name);
                       var ptwo = $("<p>").text("Equipment: " + tempEquipment);
                       var pthree = $("<p>").text("Description: " + results[i].description);
                       let demoJSON = {
                         field: ("Description: " + results[i].description)
                       }
+                      
+                      var favoriteExercise = $("<button>").addClass("float-right");
+                      favoriteExercise.text("Add to favorites");
+                      favoriteExercise.addClass("my-favorite-exercise btn btn-primary");
+                      favoriteExercise.attr("data-exercise-name", results[i].name);
+                      favoriteExercise.attr("data-equipment", tempEquipment);
+                      favoriteExercise.attr("data-exercise-description", demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
+                      workoutDiv.append(favoriteExercise)                    
                       workoutDiv.append(p);
                       workoutDiv.append(ptwo);
                       workoutDiv.append(demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
                       $("#results").prepend(workoutDiv);
                       }
                     }
+                    $("#results").prepend(head)
                 });
             }
         });
@@ -371,7 +402,7 @@
           //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
           //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
           $("#submit").on("click", function(){
-          
+            var head = $("<div>").text("Calf Workouts").addClass("workoutTitle")
           $.ajax({
               url: basicQueryURL + "/" + endpointExercise,
               method: "GET"
@@ -411,19 +442,28 @@
           
                         if (results[i].category == 14) {
                           
-                        var workoutDiv = $("<div>");
+                        var workoutDiv = $("<div>").addClass("card workoutCard");
                         var p = $("<p>").text("Name: " + results[i].name);
                         var ptwo = $("<p>").text("Equipment: " + tempEquipment);
                         var pthree = $("<p>").text("Description: " + results[i].description);
                         let demoJSON = {
                           field: ("Description: " + results[i].description)
                         }
+                        
+                        var favoriteExercise = $("<button>").addClass("float-right");
+                        favoriteExercise.text("Add to favorites");
+                        favoriteExercise.addClass("my-favorite-exercise btn btn-primary");
+                        favoriteExercise.attr("data-exercise-name", results[i].name);
+                        favoriteExercise.attr("data-equipment", tempEquipment);
+                        favoriteExercise.attr("data-exercise-description", demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
+                        workoutDiv.append(favoriteExercise)
                         workoutDiv.append(p);
                         workoutDiv.append(ptwo);
                         workoutDiv.append(demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
                         $("#results").prepend(workoutDiv);
                         }
                       }
+                      $("#results").prepend(head)
                   });
               }
           });
@@ -479,7 +519,7 @@
             //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
             //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
             $("#submit").on("click", function(){
-            
+              var head = $("<div>").text("Chest Workouts").addClass("workoutTitle")
             $.ajax({
                 url: basicQueryURL + "/" + endpointExercise,
                 method: "GET"
@@ -519,19 +559,28 @@
             
                           if (results[i].category == 11) {
                             
-                          var workoutDiv = $("<div>");
+                          var workoutDiv = $("<div>").addClass("card workoutCard");
                           var p = $("<p>").text("Name: " + results[i].name);
                           var ptwo = $("<p>").text("Equipment: " + tempEquipment);
                           var pthree = $("<p>").text("Description: " + results[i].description);
                           let demoJSON = {
                             field: ("Description: " + results[i].description)
                           }
+                          
+                          var favoriteExercise = $("<button>").addClass("float-right");
+                          favoriteExercise.text("Add to favorites");
+                          favoriteExercise.addClass("my-favorite-exercise btn btn-primary");
+                          favoriteExercise.attr("data-exercise-name", results[i].name);
+                          favoriteExercise.attr("data-equipment", tempEquipment);
+                          favoriteExercise.attr("data-exercise-description", demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
+                          workoutDiv.append(favoriteExercise)
                           workoutDiv.append(p);
                           workoutDiv.append(ptwo);
                           workoutDiv.append(demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
                           $("#results").prepend(workoutDiv);
                           }
                         }
+                        $("#results").prepend(head)
                     });
                 }
             });
@@ -587,7 +636,7 @@
               //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
               //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
               $("#submit").on("click", function(){
-              
+                var head = $("<div>").text("Leg Workouts").addClass("workoutTitle")
               $.ajax({
                   url: basicQueryURL + "/" + endpointExercise,
                   method: "GET"
@@ -627,19 +676,28 @@
               
                             if (results[i].category == 9) {
                               
-                            var workoutDiv = $("<div>");
+                            var workoutDiv = $("<div>").addClass("card workoutCard");
                             var p = $("<p>").text("Name: " + results[i].name);
                             var ptwo = $("<p>").text("Equipment: " + tempEquipment);
                             var pthree = $("<p>").text("Description: " + results[i].description);
                             let demoJSON = {
                               field: ("Description: " + results[i].description)
                             }
+                            
+                            var favoriteExercise = $("<button>").addClass("float-right");
+                            favoriteExercise.text("Add to favorites");
+                            favoriteExercise.addClass("my-favorite-exercise btn btn-primary");
+                            favoriteExercise.attr("data-exercise-name", results[i].name);
+                            favoriteExercise.attr("data-equipment", tempEquipment);
+                            favoriteExercise.attr("data-exercise-description", demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
+                            workoutDiv.append(favoriteExercise)
                             workoutDiv.append(p);
                             workoutDiv.append(ptwo);
                             workoutDiv.append(demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
                             $("#results").prepend(workoutDiv);
                             }
                           }
+                          $("#results").prepend(head)
                       });
                   }
               });
@@ -695,7 +753,7 @@
                 //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
                 //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
                 $("#submit").on("click", function(){
-                
+                  var head = $("<div>").text("shoulder Workouts").addClass("workoutTitle")
                 $.ajax({
                     url: basicQueryURL + "/" + endpointExercise,
                     method: "GET"
@@ -735,19 +793,28 @@
                 
                               if (results[i].category == 13) {
                                 
-                              var workoutDiv = $("<div>");
+                              var workoutDiv = $("<div>").addClass("card workoutCard");
+                              var head= $("<h1>").text("Shoulders")
                               var p = $("<p>").text("Name: " + results[i].name);
                               var ptwo = $("<p>").text("Equipment: " + tempEquipment);
                               var pthree = $("<p>").text("Description: " + results[i].description);
                               let demoJSON = {
                                 field: ("Description: " + results[i].description)
                               }
+                              var favoriteExercise = $("<button>").addClass("float-right");
+                              favoriteExercise.text("Add to favorites");
+                              favoriteExercise.addClass("my-favorite-exercise btn btn-primary");
+                              favoriteExercise.attr("data-exercise-name", results[i].name);
+                              favoriteExercise.attr("data-equipment", tempEquipment);
+                              favoriteExercise.attr("data-exercise-description", demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
+                              workoutDiv.append(favoriteExercise)
                               workoutDiv.append(p);
                               workoutDiv.append(ptwo);
                               workoutDiv.append(demoJSON.field.replace(/(<([^>]+)>)/ig, ""));
                               $("#results").prepend(workoutDiv);
                               }
                             }
+                            $("#results").prepend(head)
                         });
                     }
                 });
