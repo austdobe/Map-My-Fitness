@@ -1,5 +1,29 @@
 # project01
-Collaborative Project UNC Coding Bootcamp
+PROJECT 1 - Collaborative Project UNC Coding Bootcamp
+
+Starting a new health journey can be a challenge without help.  Our goal was to provide the average individual some tools to plan their own workouts and make healthy food choices.  We accomplished this first by allowing the user to search for exercises that they can incorporate their workouts along with a YouTube search for these exercises.  Secondly, we put in a search feature for users to search for new recipes, and calculate nutrition for Individual items as well as input their own recipes to view nutritional data.
+
+We split up the project into 5 main areas of focus:
+
+Jesse - Initially worked on incorporating a full YouTube API, but then transitioned into communicating with the WGER exercise database API to generate a massive list of exercises for each muscle group.
+
+Scott - worked with the Edamam API to generate the recipe search and nutritional data.
+
+Maurice - developed the signup form and worked with plotly.js integration to track weight loss progress.
+
+Jeff - worked on authentication through Firebase, capturing and storing all of the profile data and displaying it appropriately.  Responsible for all of the modals displayed on the site.
+
+Austin - in charge of UI, responsible for the look and feel of the site and incorporating proper display of all of the features in our application.
+
+Future Development:
+
+1. Legal considerations - terms and conditions
+2. This would work best as a smart phone app.
+3. Add a feature to allow users to track their calories for the day.
+4. Add a feature to allow users to create a workout plan for each day.
+5. Update the weight loss chart to show dates, as opposed to referencing each week.
+
+********************************************************************************
 
 PROJECT 1 - PROPOSAL
 
