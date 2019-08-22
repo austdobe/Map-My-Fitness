@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
+    // Link to Firebase
     var database = firebase.database();
+
     // App IDs and API keys for queries
     var recipeAppID = "36ebdbad";
     var recipeAPIKey = "6800e54637175837e7457dddad91fdf9";
@@ -12,9 +14,15 @@ $(document).ready(function() {
     var numServings = "";
     var searchName = "";
 
-    // Array to compare against API response to display nutrients if available and greater than 0
-    var nutrientOptions = ["CA", "FE", "FOLDFE", "K", "MG", "NIA", "P", "RIBF", "THIA", "TOCPHA", "VITA_RAE", "VITB6A", "VITB12", "VITC", "VITD", "VITK1", "ZN"];
-    
+    // This function will clear the search boxes, any existing results and display the new search button
+    function clearSearch() {
+        $(".header-title").empty();
+        $(".display-nutrition").empty();
+        $(".display-recipes").empty();
+        $(".search-card").hide();
+        $(".newSearch").show();
+    }
+
     // This function will display the nutrition data
     function displayNutrition(response) {
         var results = response.totalNutrients;
@@ -23,11 +31,9 @@ $(document).ready(function() {
         // Empties out any nutrition facts already displayed
         $(".display-nutrition").empty();
 
-
         // Changes the header from Recipe to Nutrition Facts
         $(".header-title").html("<h1>Nutrition Facts</h1>");
         $(".header-title").prepend("<h1>" + searchName + "</h1>");
-
 
         // Puts all of the main nutrition data into appropriate variables
         var rServings = "<tr><td>Number of servings: " + numServings + "</td></tr>"; // results.
@@ -83,18 +89,15 @@ $(document).ready(function() {
         // Displays the information in a new table
         $(".display-nutrition").append(rServings + rCalories + rTotalFat + rSaturatedFat + rTransFat + rCholesterol + rSodium + rCarbs + rFiber + rSugar + rProtein);
 
-    }
+    } // End displayNutrition function
 
     // Keyword search for Recipes - on click function
     $("#submit-recipe").on("click", function(event) {
 
         event.preventDefault();
 
-        // Empties any recipes that are displayed and hides the search boxes
-        $(".display-nutrition").empty();
-        $(".display-recipes").empty();
-        $(".search-card").hide()
-        $(".newSearch").show()
+        // This function will clear the search boxes, any existing results and display the new search button
+        clearSearch();
         
         // Grabs the keyword search, saves it in a variable and then clears the input box
         var recipeQueryTerm = $("#recipe-search").val().trim();
@@ -116,6 +119,7 @@ $(document).ready(function() {
             // For Loop to grab necessary information for each resulting recipe
             for (i=0; i < results.length; i++) {
 
+                // Start compiling all the data into appropriate <div> & <p> tags to display recipes
                 var divWrapper = $("<div>");
                 divWrapper.addClass("card recipe-card card-body text-center")
 
@@ -152,6 +156,8 @@ $(document).ready(function() {
                 $(".display-recipes").append(divWrapper);
 
             };
+
+            // Link to database to incorporate favorite recipes
             database.ref("/users/"+firebase.auth().currentUser.uid+"/favorites/recipes").once("value", function(parent) {
                 parent.forEach(function(snapshot) {
                     let favoriteButton = $(document).find("[data-recipe-url = '" + snapshot.val().recipeUrl.toString()+"']");
@@ -167,18 +173,16 @@ $(document).ready(function() {
 
         });
 
-    // End of onclick function for recipe request submit button
-    });
+    });// End of onclick function for recipe request submit button
 
     // Request for nutrition - my Recipes
     $("#submit-my-recipe").on("click", function(event) {
 
         event.preventDefault();
 
-        // Empties any recipes that are displayed and hides the search boxes
-        $(".display-recipes").empty();
-        $(".search-card").hide()
-        $(".newSearch").show()
+        // This function will clear the search boxes, any existing results and display the new search button
+        clearSearch();
+
         // Grabs the input values into new variables and then clears input boxes
         var myRecipeTitle = $("#my-recipe-name").val().trim();
         numServings = parseInt($("#my-recipe-servings").val().trim());
@@ -215,7 +219,7 @@ $(document).ready(function() {
     
         });
 
-    });
+    }); // End of on click for my recipe to nutrition search
 
 
     // Individual Food Item Nutrition Facts
@@ -223,10 +227,9 @@ $(document).ready(function() {
 
         event.preventDefault();
 
-        // Empties any recipes that are displayed and hides the search boxes
-        $(".display-recipes").empty();
-        $(".search-card").hide()
-        $(".newSearch").show()
+        // This function will clear the search boxes, any existing results and display the new search button
+        clearSearch();
+
         // Grabs the input values into new variables and then clears input boxes
         var ingredient = $("#ingredient-entry").val().trim();
         var ingredientEntry = encodeURI(ingredient);
@@ -251,12 +254,17 @@ $(document).ready(function() {
         });
 
 
-    });
+    }); // End of on click for food item nutrition facts
+
+    // Functionality for clicking on a new search
     $(document).on("click", ".newSearch", function(event){
+        $(".header-title").empty();
+        $(".display-nutrition").empty();
         $(".display-recipes").empty();
-        $(".search-card").show()
-        $(".newSearch").hide()
+        $(".search-card").show();
+        $(".newSearch").hide();
     })
   
+    // Starts with the new search button hidden
     $(".newSearch").hide()
 });
