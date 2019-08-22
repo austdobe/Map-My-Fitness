@@ -47,7 +47,8 @@
     
         //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
         //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
-        $("#submit").on("click", function(){
+        $("#workoutSubmit").on("click", function(event){
+          event.preventDefault();
           var head = $("<div>").text("Ab Workouts").addClass("workoutTitle")
           
     
@@ -167,7 +168,8 @@
       
       //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
       //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
-      $("#submit").on("click", function(){
+      $("#workoutSubmit").on("click", function(event){
+        event.preventDefault();
       var head = $("<div>").text("Arm Workouts").addClass("workoutTitle")
       $.ajax({
           url: basicQueryURL + "/" + endpointExercise,
@@ -284,7 +286,8 @@
         
         //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
         //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
-        $("#submit").on("click", function(){
+        $("#workoutSubmit").on("click", function(event){
+          event.preventDefault();
           var head = $("<div>").text("Back Workouts").addClass("workoutTitle")
         $.ajax({
             url: basicQueryURL + "/" + endpointExercise,
@@ -401,7 +404,8 @@
           
           //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
           //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
-          $("#submit").on("click", function(){
+          $("#workoutSubmit").on("click", function(event){
+            event.preventDefault();
             var head = $("<div>").text("Calf Workouts").addClass("workoutTitle")
           $.ajax({
               url: basicQueryURL + "/" + endpointExercise,
@@ -518,7 +522,8 @@
             
             //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
             //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
-            $("#submit").on("click", function(){
+            $("#workoutSubmit").on("click", function(event){
+              event.preventDefault();
               var head = $("<div>").text("Chest Workouts").addClass("workoutTitle")
             $.ajax({
                 url: basicQueryURL + "/" + endpointExercise,
@@ -635,7 +640,8 @@
               
               //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
               //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
-              $("#submit").on("click", function(){
+              $("#workoutSubmit").on("click", function(event){
+                event.preventDefault();
                 var head = $("<div>").text("Leg Workouts").addClass("workoutTitle")
               $.ajax({
                   url: basicQueryURL + "/" + endpointExercise,
@@ -752,7 +758,8 @@
                 
                 //This is a double AJAX call. Each time you submit a request, it comes back with only 20 results.
                 //The exercise JSON results returns a lot, so the second query generates all the results back in one JSON file.
-                $("#submit").on("click", function(){
+                $("#workoutSubmit").on("click", function(event){
+                  event.preventDefault();
                   var head = $("<div>").text("shoulder Workouts").addClass("workoutTitle")
                 $.ajax({
                     url: basicQueryURL + "/" + endpointExercise,
