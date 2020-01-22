@@ -1,5 +1,4 @@
-# project01
-PROJECT 1 - Collaborative Project UNC Coding Bootcamp
+# Map-My-Fitness
 
 Starting a new health journey can be a challenge without help.  Our goal was to provide the average individual some tools to plan their own workouts and make healthy food choices.  We accomplished this first by allowing the user to search for exercises that they can incorporate their workouts along with a YouTube search for these exercises.  Secondly, we put in a search feature for users to search for new recipes, and calculate nutrition for Individual items as well as input their own recipes to view nutritional data.
 
@@ -24,8 +23,6 @@ Future Development:
 5. Update the weight loss chart to show dates, as opposed to referencing each week.
 
 ********************************************************************************
-
-PROJECT 1 - PROPOSAL
 
 Project Title:
 Map My Fitness
