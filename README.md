@@ -35,7 +35,7 @@ Three Options:
 * API (WGER - Exercise, Edamam - Nutrition)
 
 # Deployed Site:
-https://project2-10-2019.herokuapp.com/
+https://austdobe.github.io/Map-My-Fitness/
 
 # Future Development Considerations:
 
@@ -49,11 +49,9 @@ https://project2-10-2019.herokuapp.com/
 	
 4. Update the weight loss chart feature to show dates, as opposed to referencing each week.
 
-
-
-Rough Breakdown of Tasks:
-Austin - Bootstrap initial design
-Scott - Edamam API 
-Maurice - Working on users form 
-Jeff - Firebase login
-Jesse - Youtube API to pull trending workouts
+# Contributors
+* Austin Dober | Design & Bootstrap Implementation | https://github.com/austdobe
+* Maurice | Sign-up Form & Weight Loss Charting | https://github.com/acarlie
+* Jeff Swanner | Firebase & Authentication | https://github.com/EthanD0922
+* Jesse Dennick | WGER API (Exercise) | https://github.com/PaolaStone
+* Scott Moore | Edamam API (Nutrition) | https://github.com/hguidoum
