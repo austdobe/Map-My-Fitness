@@ -4,7 +4,7 @@
    var status = "&status=2";
    var queryURL = "";
 
-   var basicQueryURL = "https://cors-anywhere.herokuapp.com/https://wger.de/api/v2/";
+   var basicQueryURL = "https://cors-anywhere.herokuapp.com/http://wger.de/api/v2/";
 
    var endpointEquipment = "equipment";
    var endpointExercise = "exercise";
@@ -18,9 +18,13 @@
    var myLocalEquipment = {};
    var exerciseEquipment = "";
 
+   console.log(basicQueryURL + endpointEquipment);
+
    // This is an initial AJAX call to generate and sort the list of equipment used in various exercises
    $.ajax({
-    url: "https://cors-anywhere.herokuapp.com/" + basicQueryURL + endpointEquipment,
+    // url: "https://cors-anywhere.herokuapp.com/" + basicQueryURL + endpointEquipment,
+    url: basicQueryURL + endpointEquipment,
+
     method: "GET"
       }).then(function(response) {
 

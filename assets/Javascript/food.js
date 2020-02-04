@@ -104,7 +104,7 @@ $(document).ready(function() {
         $("#recipe-search").val("");
 
         // Query URL for recipe search API
-        recipeQueryURL = "https://api.edamam.com/search?q=" + recipeQueryTerm + "&app_id=$" + recipeAppID + "&app_key=$" + recipeAPIKey + "&from=0&to=10";
+        recipeQueryURL = "https://api.edamam.com/search?q=" + recipeQueryTerm + "&app_id=" + recipeAppID + "&app_key=" + recipeAPIKey + "&from=0&to=10";
 
         // Call to the API
         $.ajax({
