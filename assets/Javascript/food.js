@@ -104,7 +104,7 @@ $(document).ready(function() {
         $("#recipe-search").val("");
 
         // Query URL for recipe search API
-        recipeQueryURL = "https://api.edamam.com/search?q=" + recipeQueryTerm + "&app_id=" + recipeAppID + "&app_key=" + recipeAPIKey + "&from=0&to=10";
+        recipeQueryURL = "https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=" + recipeQueryTerm + "&app_id=" + recipeAppID + "&app_key=" + recipeAPIKey + "&from=0&to=10";
 
         // Call to the API
         $.ajax({
@@ -205,7 +205,7 @@ $(document).ready(function() {
 
         // Ajax - POST
         $.ajax({
-            url: "https://api.edamam.com/api/nutrition-details?app_id=92b9868a&app_key=b85dca31bdd750ae0c2d4fcc2095bafe",
+            url: "https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/nutrition-details?app_id=92b9868a&app_key=b85dca31bdd750ae0c2d4fcc2095bafe",
             method: "POST",
             contentType: 'application/json',
             data: mydataFile
@@ -240,7 +240,7 @@ $(document).ready(function() {
         $("#ingredient-entry").val("");
 
         // Query URL for Nutrition API
-        var nutritionQueryURL = "https://api.edamam.com/api/nutrition-data?app_id=" + nutritionAppID + "&app_key=" + nutritionAPIKey + "&ingr=" + ingredientEntry;
+        var nutritionQueryURL = "https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/nutrition-data?app_id=" + nutritionAppID + "&app_key=" + nutritionAPIKey + "&ingr=" + ingredientEntry;
 
         // Ajax call
         $.ajax({
