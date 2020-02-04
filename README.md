@@ -25,8 +25,7 @@ Three Options:
 <img src="assets/readme-images/map-fitness-2.png" alt="Map My Fitness - Nutrition Search">
 
 # Technologies used
-## This project was created with:
-
+This project was created with:
 * HTML
 * CSS
 * JavaScript
@@ -47,8 +46,8 @@ https://austdobe.github.io/Map-My-Fitness/
 
 3. It would be great if we could add the following features to promote and track factors that aid in weight loss and strength training:
 
-* Allow users to track their calories for the day.
-* Allow users to create a workout plan for each day.
+	* Allow users to track their calories for the day.
+	* Allow users to create a workout plan for each day.
 	
 4. Update the weight loss chart feature to show dates, as opposed to referencing each week.
 
