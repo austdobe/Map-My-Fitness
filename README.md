@@ -30,6 +30,7 @@ This project was created with:
 * CSS
 * JavaScript
 * jQuery
+* Google Firebase
 * Bootstrap
 * Plotly
 * AJAX
