@@ -53,5 +53,5 @@ https://austdobe.github.io/Map-My-Fitness/
 * Austin Dober | Design & Bootstrap Implementation | https://github.com/austdobe
 * Maurice Webb | Sign-up Form & Weight Loss Charting | https://github.com/moeewebb
 * Jeff Swanner | Firebase & Authentication | https://github.com/jeff-swanner
-* Jesse Denick | WGER API (Exercise) | https://github.com/PaolaStone
+* Jesse Denick | WGER API (Exercise) | https://github.com/JDenick
 * Scott Moore | Edamam API (Nutrition) | https://github.com/hguidoum
